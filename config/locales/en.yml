@@ -1,0 +1,34 @@
+en:
+  home: Home
+  welcome: Welcome to BookStore, %{name}
+  Shop: Shop
+  account: My account
+  settings: Settings
+  orders:
+    title: Orders
+  buy_now: Buy now
+  log_in: Log in
+  sign_up: Sign up
+  log_out: Log out
+  or: or
+  cancel: Cancel
+  confirm_intentions: You must confirm your intentions
+  success_updated: Success updated
+  privacy: Privacy
+  address: Address
+  shipping_address: Shipping Address
+  billing_address: Billing Address
+  add_to_cart: Add to cart
+  description: Description
+  back_to_store: Back To Store
+  sure?: Are you sure?
+  from: from
+  to: to
+  days: days
+  edit: edit
+  dashboard: Dashboard
+  confirm_account: Confirm Account
+  language:
+    title: Language
+    en: English
+    ru: Russian

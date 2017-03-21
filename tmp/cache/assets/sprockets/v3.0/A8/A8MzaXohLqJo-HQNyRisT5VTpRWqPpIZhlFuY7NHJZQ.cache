@@ -1,0 +1,23 @@
+I"Ê(function() {
+  $(document).on("turbolinks:load", function() {
+    var activated_tab_by_hash, settings_type;
+    settings_type = window.location.hash.substr(1);
+    activated_tab_by_hash = function(hash) {
+      var activated_link;
+      activated_link = document.getElementById(hash + "_nav");
+      if (hash && activated_link) {
+        return $(activated_link).tab('show');
+      }
+    };
+    activated_tab_by_hash(settings_type);
+    return $('.tab-link').click(function(e) {
+      var scrollmem;
+      $(this).tab('show');
+      scrollmem = $('body').scrollTop() || $('html').scrollTop();
+      window.location.hash = this.hash;
+      return $('html,body').scrollTop(scrollmem);
+    });
+  });
+
+}).call(this);
+:ET

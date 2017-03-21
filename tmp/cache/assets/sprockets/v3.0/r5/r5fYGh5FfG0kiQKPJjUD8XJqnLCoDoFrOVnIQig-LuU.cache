@@ -1,0 +1,28 @@
+I"(function() {
+  $(document).on("turbolinks:load", function() {
+    var setCodePlaceholder;
+    setCodePlaceholder = function(element, code) {
+      var new_placeholder, placeholder;
+      placeholder = $(element).attr('placeholder').replace(/\s\(\+\d+\)/, '');
+      if (code) {
+        new_placeholder = placeholder + " (+" + code + ")";
+      }
+      return $(element).attr('placeholder', new_placeholder);
+    };
+    $('.address-phone').each(function() {
+      var address_fields, code;
+      address_fields = $(this).closest('.address-fields');
+      code = $('.select-country', address_fields).find(':selected').attr('data-code');
+      return setCodePlaceholder(this, code);
+    });
+    return $('.select-country').change(function() {
+      var address_fields, code, phone_field;
+      code = $(this).find(':selected').attr('data-code');
+      address_fields = $(this).closest('.address-fields');
+      phone_field = $('.address-phone', address_fields);
+      return setCodePlaceholder(phone_field, code);
+    });
+  });
+
+}).call(this);
+:ET

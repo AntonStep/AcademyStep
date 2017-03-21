@@ -1,0 +1,24 @@
+I"g(function() {
+  $(document).on("turbolinks:load", function() {
+    var checked_by_value;
+    $('#use_base_address').click(function() {
+      return $('#shipping_fields').slideToggle();
+    });
+    $('input[name=delivery_id]').click(function() {
+      var delivery_cost, delivery_item, delivery_order_subtotal;
+      checked_by_value($(this).attr('value'));
+      delivery_item = $(this).closest('.delivery-item');
+      delivery_order_subtotal = $('.delivery-order-subtotal', delivery_item).html();
+      delivery_cost = $('.delivery-cost', delivery_item).html();
+      $('#order_subtotal').html(delivery_order_subtotal);
+      return $('#order_delivery').html(delivery_cost);
+    });
+    return checked_by_value = function(value) {
+      return $("input[value=" + value + "]").each(function() {
+        return this.checked = true;
+      });
+    };
+  });
+
+}).call(this);
+:ET

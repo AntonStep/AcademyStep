@@ -1,0 +1,19 @@
+I"((function() {
+  $(document).on("turbolinks:load", function() {
+    $('#filter_book').change(function() {
+      return this.submit();
+    });
+    $('.desc_button').click(function() {
+      return $('.description-block').toggleClass('active');
+    });
+    return $('.bonus-picture').click(function() {
+      var $main_picture, bonus_img;
+      $main_picture = $('#main-picture');
+      bonus_img = $(this).attr('src');
+      $(this).attr('src', $main_picture.attr('src'));
+      return $main_picture.attr('src', bonus_img);
+    });
+  });
+
+}).call(this);
+:ET

@@ -1,0 +1,12 @@
+I"(function() {
+  $(document).on("turbolinks:load", function() {
+    $('#filter_orders').change(function() {
+      return this.submit();
+    });
+    return $('.table-link').click(function() {
+      return window.document.location = $(this).data('href');
+    });
+  });
+
+}).call(this);
+:ET
