@@ -10,9 +10,9 @@ CarrierWave.configure do |config|
     config.storage = :fog
     config.fog_credentials = {
       provider: 'AWS',
-      aws_access_key_id: Figaro.env.aws_access_key_id,
-      aws_secret_access_key: Figaro.env.aws_secret_access_key
+      aws_access_key_id: 'AKIAI3GS7E5P4UCYWNQQ',
+      aws_secret_access_key: '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'
     }
-    config.fog_directory = Figaro.env.aws_bucket
+    config.fog_directory = 'images'
   end
 end
