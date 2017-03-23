@@ -1,3 +1,3 @@
-aws_access_key_id: 'AKIAILOWRCA4ZYM55PMA'
-aws_secret_access_key: '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'
-config.fog_directory: 'bookstorestep1'
+aws_access_key_id: 'AKIAJ5RP2M5MDDPOHNAA'
+aws_secret_access_key: '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'
+config.fog_directory: 'bookstorestep2'
