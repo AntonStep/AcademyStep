@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: amazon_production
-  username: amazon
-password: <%= ENV['AMAZON_DATABASE_PASSWORD'] %>
+  database: 'd4gs95sf3ughph'
+  username: 'ojtddufpyizvno'
+  password: '27d1184a6708652b369ffeca2f867bc82aa7249f2b1cabd0b4cb1d09ffd673c3'

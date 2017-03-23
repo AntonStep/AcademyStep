@@ -12340,3 +12340,632 @@ DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.
 DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
 DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
 DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+  [1m[36mUser Load (167.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+Started GET "/" for 127.0.0.1 at 2017-03-23 13:18:26 +0200
+  [1m[36mActiveRecord::SchemaMigration Load (11.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MainPagesController#home as HTML
+  [1m[36mCategory Load (47.5ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."title" = $1 LIMIT $2[0m  [["title", "Mobile"], ["LIMIT", 1]]
+  [1m[36mBook Load (123.5ms)[0m  [1m[34mSELECT  "books".* FROM "books" INNER JOIN "categories" ON "categories"."id" = "books"."category_id" INNER JOIN "order_items" ON "order_items"."book_id" = "books"."id" INNER JOIN "orders" ON "orders"."id" = "order_items"."order_id" WHERE (lower(categories.title) = 'mobile') AND "orders"."state" = $1 GROUP BY order_items.book_id, books.id ORDER BY SUM(order_items.quantity) desc LIMIT $2[0m  [["state", "delivered"], ["LIMIT", 4]]
+  [1m[36mHABTM_Authors Load (21.4ms)[0m  [1m[34mSELECT "authors_books".* FROM "authors_books" WHERE "authors_books"."book_id" IN (4, 8, 7)[0m
+  [1m[36mAuthor Load (11.4ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (20, 18, 19)[0m
+  Rendering main_pages/home.html.haml within layouts/application
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "books" INNER JOIN "categories" ON "categories"."id" = "books"."category_id" WHERE (lower(categories.title) = 'mobile') LIMIT $1) subquery_for_count[0m  [["LIMIT", 4]]
+  [1m[36mBook Load (2.8ms)[0m  [1m[34mSELECT  "books".* FROM "books" INNER JOIN "categories" ON "categories"."id" = "books"."category_id" WHERE (lower(categories.title) = 'mobile') ORDER BY "books"."created_at" DESC LIMIT $1[0m  [["LIMIT", 4]]
+  [1m[36mHABTM_Authors Load (3.6ms)[0m  [1m[34mSELECT "authors_books".* FROM "authors_books" WHERE "authors_books"."book_id" IN (19, 18, 17, 16)[0m
+  [1m[36mAuthor Load (1.5ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (18, 19, 20)[0m
+  Rendered books/_carousel_books.html.haml (2124.9ms)
+  Rendered books/_book_buttons.html.haml (9.6ms)
+  Rendered books/_book_buttons.html.haml (2.3ms)
+  Rendered books/_book_buttons.html.haml (8.2ms)
+  Rendered main_pages/home.html.haml within layouts/application (2332.2ms)
+  [1m[36mOrder Load (1.1ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 AND "orders"."state" = $2 LIMIT $3[0m  [["id", 5], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mOrder Load (1.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."state" = $2 ORDER BY "orders"."id" DESC LIMIT $3[0m  [["user_id", 2], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (1.0ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1 ORDER BY "order_items"."created_at" ASC[0m  [["order_id", 5]]
+  [1m[36mCategory Load (1.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered layouts/_collapse_ul.html.haml (29.4ms)
+  Rendered layouts/_collapse_ul.html.haml (6.1ms)
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (17.8ms)
+  Rendered layouts/_collapse_ul.html.haml (36.4ms)
+  [1m[36mBook Load (80.9ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "authors_books" ON "authors_books"."book_id" = "books"."id" INNER JOIN "authors" ON "authors"."id" = "authors_books"."author_id" INNER JOIN "pictures" ON "pictures"."imageable_id" = "books"."id" AND "pictures"."imageable_type" = $1 INNER JOIN "books_materials" ON "books_materials"."book_id" = "books"."id" INNER JOIN "materials" ON "materials"."id" = "books_materials"."material_id" INNER JOIN "reviews" ON "reviews"."book_id" = "books"."id" AND "reviews"."state" = $2 INNER JOIN "users" ON "users"."id" = "reviews"."user_id"[0m  [["imageable_type", "Book"], ["state", "approved"]]
+  Rendered layouts/_collapse_ul.html.haml (232.9ms)
+  Rendered layouts/_navbar.html.haml (337.4ms)
+  Rendered layouts/_dropdown_ul.html.haml (5.3ms)
+  Rendered layouts/_dropdown_ul.html.haml (1.7ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (9.9ms)
+  Rendered layouts/_dropdown_ul.html.haml (12.7ms)
+  Rendered layouts/_dropdown_ul.html.haml (2.4ms)
+  Rendered layouts/_navbar.html.haml (30.0ms)
+  Rendered layouts/_header.html.haml (541.8ms)
+  Rendered layouts/_footer.html.haml (18.6ms)
+Completed 200 OK in 6190ms (Views: 3655.0ms | ActiveRecord: 413.9ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2017-03-23 13:18:48 +0200
+Processing by RailsAdmin::MainController#dashboard as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBook Load (12.5ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "authors_books" ON "authors_books"."book_id" = "books"."id" INNER JOIN "authors" ON "authors"."id" = "authors_books"."author_id" INNER JOIN "pictures" ON "pictures"."imageable_id" = "books"."id" AND "pictures"."imageable_type" = $1 INNER JOIN "books_materials" ON "books_materials"."book_id" = "books"."id" INNER JOIN "materials" ON "materials"."id" = "books_materials"."material_id" INNER JOIN "reviews" ON "reviews"."book_id" = "books"."id" AND "reviews"."state" = $2 INNER JOIN "users" ON "users"."id" = "reviews"."user_id"[0m  [["imageable_type", "Book"], ["state", "approved"]]
+  [1m[35m (45.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "addresses"[0m
+  [1m[36mAddress Load (0.7ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" ORDER BY "addresses"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "authors"[0m
+  [1m[36mAuthor Load (0.6ms)[0m  [1m[34mSELECT  "authors".* FROM "authors" ORDER BY "authors"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "books" WHERE ('t'='t')[0m
+  [1m[36mBook Load (2.4ms)[0m  [1m[34mSELECT  "books".* FROM "books" ORDER BY "books"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "categories" WHERE ('t'='t')[0m
+  [1m[36mCategory Load (1.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (15.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "countries"[0m
+  [1m[36mCountry Load (0.6ms)[0m  [1m[34mSELECT  "countries".* FROM "countries" ORDER BY "countries"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (9.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "coupons"[0m
+  [1m[36mCoupon Load (0.6ms)[0m  [1m[34mSELECT  "coupons".* FROM "coupons" ORDER BY "coupons"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (3.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "deliveries"[0m
+  [1m[36mDelivery Load (0.7ms)[0m  [1m[34mSELECT  "deliveries".* FROM "deliveries" ORDER BY "deliveries"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "materials"[0m
+  [1m[36mMaterial Load (0.7ms)[0m  [1m[34mSELECT  "materials".* FROM "materials" ORDER BY "materials"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (7.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE ('t'='t')[0m
+  [1m[36mOrder Load (0.8ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" ORDER BY "orders"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (23.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (1.0ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" ORDER BY "pictures"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews" WHERE ('t'='t')[0m
+  [1m[36mReview Load (1.4ms)[0m  [1m[34mSELECT  "reviews".* FROM "reviews" ORDER BY "reviews"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE ('t'='t')[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendering /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application (143.4ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/_secondary_navigation.html.haml (9.0ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/_navigation.html.haml (18.8ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/_sidebar_navigation.html.haml (38.9ms)
+  Rendering /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/pjax.html.haml
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/pjax.html.haml (8.4ms)
+Completed 200 OK in 2202ms (Views: 976.5ms | ActiveRecord: 153.8ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2017-03-23 13:18:50 +0200
+Processing by RailsAdmin::MainController#dashboard as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBook Load (16.6ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "authors_books" ON "authors_books"."book_id" = "books"."id" INNER JOIN "authors" ON "authors"."id" = "authors_books"."author_id" INNER JOIN "pictures" ON "pictures"."imageable_id" = "books"."id" AND "pictures"."imageable_type" = $1 INNER JOIN "books_materials" ON "books_materials"."book_id" = "books"."id" INNER JOIN "materials" ON "materials"."id" = "books_materials"."material_id" INNER JOIN "reviews" ON "reviews"."book_id" = "books"."id" AND "reviews"."state" = $2 INNER JOIN "users" ON "users"."id" = "reviews"."user_id"[0m  [["imageable_type", "Book"], ["state", "approved"]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "addresses"[0m
+  [1m[36mAddress Load (0.9ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" ORDER BY "addresses"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "authors"[0m
+  [1m[36mAuthor Load (0.7ms)[0m  [1m[34mSELECT  "authors".* FROM "authors" ORDER BY "authors"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "books" WHERE ('t'='t')[0m
+  [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT  "books".* FROM "books" ORDER BY "books"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "categories" WHERE ('t'='t')[0m
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "countries"[0m
+  [1m[36mCountry Load (0.8ms)[0m  [1m[34mSELECT  "countries".* FROM "countries" ORDER BY "countries"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "coupons"[0m
+  [1m[36mCoupon Load (0.5ms)[0m  [1m[34mSELECT  "coupons".* FROM "coupons" ORDER BY "coupons"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "deliveries"[0m
+  [1m[36mDelivery Load (0.6ms)[0m  [1m[34mSELECT  "deliveries".* FROM "deliveries" ORDER BY "deliveries"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "materials"[0m
+  [1m[36mMaterial Load (0.7ms)[0m  [1m[34mSELECT  "materials".* FROM "materials" ORDER BY "materials"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE ('t'='t')[0m
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" ORDER BY "orders"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.6ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" ORDER BY "pictures"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews" WHERE ('t'='t')[0m
+  [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT  "reviews".* FROM "reviews" ORDER BY "reviews"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE ('t'='t')[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendering /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application (84.2ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/_secondary_navigation.html.haml (9.6ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/_navigation.html.haml (17.2ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/_sidebar_navigation.html.haml (32.6ms)
+  Rendering /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/pjax.html.haml
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/pjax.html.haml (7.9ms)
+Completed 200 OK in 569ms (Views: 463.1ms | ActiveRecord: 32.5ms)
+
+
+Started GET "/admin/picture?_pjax=%5Bdata-pjax-container%5D" for 127.0.0.1 at 2017-03-23 13:19:00 +0200
+Processing by RailsAdmin::MainController#index as HTML
+  Parameters: {"_pjax"=>"[data-pjax-container]", "model_name"=>"picture"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBook Load (13.3ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "authors_books" ON "authors_books"."book_id" = "books"."id" INNER JOIN "authors" ON "authors"."id" = "authors_books"."author_id" INNER JOIN "pictures" ON "pictures"."imageable_id" = "books"."id" AND "pictures"."imageable_type" = $1 INNER JOIN "books_materials" ON "books_materials"."book_id" = "books"."id" INNER JOIN "materials" ON "materials"."id" = "books_materials"."material_id" INNER JOIN "reviews" ON "reviews"."book_id" = "books"."id" AND "reviews"."state" = $2 INNER JOIN "users" ON "users"."id" = "reviews"."user_id"[0m  [["imageable_type", "Book"], ["state", "approved"]]
+  Rendering /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/index.html.haml within layouts/rails_admin/pjax
+  [1m[36mPicture Load (0.7ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" ORDER BY pictures.id desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/index.html.haml within layouts/rails_admin/pjax (220.6ms)
+Completed 200 OK in 313ms (Views: 263.1ms | ActiveRecord: 17.2ms)
+
+
+Started GET "/admin/picture/new?_pjax=%5Bdata-pjax-container%5D" for 127.0.0.1 at 2017-03-23 13:19:03 +0200
+Processing by RailsAdmin::MainController#new as HTML
+  Parameters: {"_pjax"=>"[data-pjax-container]", "model_name"=>"picture"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBook Load (17.8ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "authors_books" ON "authors_books"."book_id" = "books"."id" INNER JOIN "authors" ON "authors"."id" = "authors_books"."author_id" INNER JOIN "pictures" ON "pictures"."imageable_id" = "books"."id" AND "pictures"."imageable_type" = $1 INNER JOIN "books_materials" ON "books_materials"."book_id" = "books"."id" INNER JOIN "materials" ON "materials"."id" = "books_materials"."material_id" INNER JOIN "reviews" ON "reviews"."book_id" = "books"."id" AND "reviews"."state" = $2 INNER JOIN "users" ON "users"."id" = "reviews"."user_id"[0m  [["imageable_type", "Book"], ["state", "approved"]]
+  Rendering /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/new.html.haml within layouts/rails_admin/pjax
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/_form_file_upload.html.haml (128.3ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/_form_polymorphic_association.html.haml (7.8ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/_submit_buttons.html.haml (10.7ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/new.html.haml within layouts/rails_admin/pjax (267.2ms)
+Completed 200 OK in 350ms (Views: 294.8ms | ActiveRecord: 21.1ms)
+
+
+Started POST "/admin/picture/new" for 127.0.0.1 at 2017-03-23 13:19:21 +0200
+Processing by RailsAdmin::MainController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bDxi0weNrb6KPOSYQV542spOgFlDVAgsiHGa31zxO+S2L5q6lVeK0cJMF0uUjepuiqOlSRybMrSEmcMiXZUd/g==", "picture"=>{"path"=>#<ActionDispatch::Http::UploadedFile:0x007f7dd70fe680 @tempfile=#<Tempfile:/tmp/RackMultipart20170323-13170-zwmbdg.jpg>, @original_filename="B05517_MockupCover_Cookbook_0.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"picture[path]\"; filename=\"B05517_MockupCover_Cookbook_0.jpg\"\r\nContent-Type: image/jpeg\r\n">, "path_cache"=>"", "imageable_type"=>"", "imageable_id"=>""}, "return_to"=>"http://localhost:3000/admin/picture", "_save"=>"", "model_name"=>"picture"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBook Load (16.1ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "authors_books" ON "authors_books"."book_id" = "books"."id" INNER JOIN "authors" ON "authors"."id" = "authors_books"."author_id" INNER JOIN "pictures" ON "pictures"."imageable_id" = "books"."id" AND "pictures"."imageable_type" = $1 INNER JOIN "books_materials" ON "books_materials"."book_id" = "books"."id" INNER JOIN "materials" ON "materials"."id" = "books_materials"."material_id" INNER JOIN "reviews" ON "reviews"."book_id" = "books"."id" AND "reviews"."state" = $2 INNER JOIN "users" ON "users"."id" = "reviews"."user_id"[0m  [["imageable_type", "Book"], ["state", "approved"]]
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (51.7ms)[0m  [1m[32mINSERT INTO "pictures" ("path", "created_at", "updated_at", "imageable_type") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["path", "B05517_MockupCover_Cookbook_0.jpg"], ["created_at", 2017-03-23 11:19:21 UTC], ["updated_at", 2017-03-23 11:19:21 UTC], ["imageable_type", ""]]
+  [1m[35m (79.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/admin/picture
+Completed 302 Found in 256ms (ActiveRecord: 153.6ms)
+
+
+Started GET "/admin/picture" for 127.0.0.1 at 2017-03-23 13:19:21 +0200
+Processing by RailsAdmin::MainController#index as HTML
+  Parameters: {"model_name"=>"picture"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBook Load (13.9ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "authors_books" ON "authors_books"."book_id" = "books"."id" INNER JOIN "authors" ON "authors"."id" = "authors_books"."author_id" INNER JOIN "pictures" ON "pictures"."imageable_id" = "books"."id" AND "pictures"."imageable_type" = $1 INNER JOIN "books_materials" ON "books_materials"."book_id" = "books"."id" INNER JOIN "materials" ON "materials"."id" = "books_materials"."material_id" INNER JOIN "reviews" ON "reviews"."book_id" = "books"."id" AND "reviews"."state" = $2 INNER JOIN "users" ON "users"."id" = "reviews"."user_id"[0m  [["imageable_type", "Book"], ["state", "approved"]]
+  Rendering /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/index.html.haml within layouts/rails_admin/application
+  [1m[36mPicture Load (1.4ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" ORDER BY pictures.id desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/index.html.haml within layouts/rails_admin/application (116.1ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/_secondary_navigation.html.haml (9.2ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/_navigation.html.haml (15.7ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/_sidebar_navigation.html.haml (26.3ms)
+  Rendering /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/pjax.html.haml
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/pjax.html.haml (12.1ms)
+Completed 200 OK in 503ms (Views: 451.2ms | ActiveRecord: 19.8ms)
+
+
+Started GET "/admin/book?_pjax=%5Bdata-pjax-container%5D" for 127.0.0.1 at 2017-03-23 13:20:02 +0200
+Processing by RailsAdmin::MainController#index as HTML
+  Parameters: {"_pjax"=>"[data-pjax-container]", "model_name"=>"book"}
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBook Load (21.0ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "authors_books" ON "authors_books"."book_id" = "books"."id" INNER JOIN "authors" ON "authors"."id" = "authors_books"."author_id" INNER JOIN "pictures" ON "pictures"."imageable_id" = "books"."id" AND "pictures"."imageable_type" = $1 INNER JOIN "books_materials" ON "books_materials"."book_id" = "books"."id" INNER JOIN "materials" ON "materials"."id" = "books_materials"."material_id" INNER JOIN "reviews" ON "reviews"."book_id" = "books"."id" AND "reviews"."state" = $2 INNER JOIN "users" ON "users"."id" = "reviews"."user_id"[0m  [["imageable_type", "Book"], ["state", "approved"]]
+  Rendering /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/index.html.haml within layouts/rails_admin/pjax
+  [1m[36mBook Load (1.2ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE ('t'='t') ORDER BY books.id desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  [1m[36mCategory Load (1.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN (5, 4)[0m
+  [1m[36mHABTM_Authors Load (0.8ms)[0m  [1m[34mSELECT "authors_books".* FROM "authors_books" WHERE "authors_books"."book_id" IN (70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51)[0m
+  [1m[36mAuthor Load (0.7ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (19, 20, 18)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "books" WHERE ('t'='t')[0m
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/index.html.haml within layouts/rails_admin/pjax (571.3ms)
+Completed 200 OK in 661ms (Views: 590.1ms | ActiveRecord: 32.7ms)
+
+
+Started GET "/admin/book/69/edit?_pjax=%5Bdata-pjax-container%5D" for 127.0.0.1 at 2017-03-23 13:20:12 +0200
+Processing by RailsAdmin::MainController#edit as HTML
+  Parameters: {"_pjax"=>"[data-pjax-container]", "model_name"=>"book", "id"=>"69"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBook Load (15.3ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "authors_books" ON "authors_books"."book_id" = "books"."id" INNER JOIN "authors" ON "authors"."id" = "authors_books"."author_id" INNER JOIN "pictures" ON "pictures"."imageable_id" = "books"."id" AND "pictures"."imageable_type" = $1 INNER JOIN "books_materials" ON "books_materials"."book_id" = "books"."id" INNER JOIN "materials" ON "materials"."id" = "books_materials"."material_id" INNER JOIN "reviews" ON "reviews"."book_id" = "books"."id" AND "reviews"."state" = $2 INNER JOIN "users" ON "users"."id" = "reviews"."user_id"[0m  [["imageable_type", "Book"], ["state", "approved"]]
+  [1m[36mBook Load (3.2ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 ORDER BY "books"."id" ASC LIMIT $2[0m  [["id", 69], ["LIMIT", 1]]
+  Rendering /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/edit.html.haml within layouts/rails_admin/pjax
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/_form_field.html.haml (2.0ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/_form_text.html.haml (49.7ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/_form_field.html.haml (0.9ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/_form_field.html.haml (7.0ms)
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "categories"[0m
+  [1m[36mCategory Load (0.8ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE ('t'='t') ORDER BY categories.id desc[0m
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/_form_filtering_select.html.haml (45.6ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/_form_file_upload.html.haml (12.0ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/_form_text.html.haml (1.0ms)
+  [1m[36mPicture Load (0.7ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures" WHERE "pictures"."imageable_id" = $1 AND "pictures"."imageable_type" = $2[0m  [["imageable_id", 69], ["imageable_type", "Book"]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (1.8ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures" ORDER BY pictures.id desc[0m
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/_form_filtering_multiselect.html.haml (39.4ms)
+  [1m[36mReview Load (0.8ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."book_id" = $1 AND "reviews"."state" = $2[0m  [["book_id", 69], ["state", "approved"]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews"[0m
+  [1m[36mReview Load (1.0ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE ('t'='t') ORDER BY reviews.id desc[0m
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/_form_filtering_multiselect.html.haml (51.7ms)
+  [1m[36mAuthor Load (0.9ms)[0m  [1m[34mSELECT "authors".* FROM "authors" INNER JOIN "authors_books" ON "authors"."id" = "authors_books"."author_id" WHERE "authors_books"."book_id" = $1[0m  [["book_id", 69]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "authors"[0m
+  [1m[36mAuthor Load (1.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" ORDER BY authors.id desc[0m
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/_form_filtering_multiselect.html.haml (32.6ms)
+  [1m[36mMaterial Load (0.8ms)[0m  [1m[34mSELECT "materials".* FROM "materials" INNER JOIN "books_materials" ON "materials"."id" = "books_materials"."material_id" WHERE "books_materials"."book_id" = $1[0m  [["book_id", 69]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "materials"[0m
+  [1m[36mMaterial Load (2.8ms)[0m  [1m[34mSELECT "materials".* FROM "materials" ORDER BY materials.id desc[0m
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/_form_filtering_multiselect.html.haml (33.5ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/_submit_buttons.html.haml (18.2ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/edit.html.haml within layouts/rails_admin/pjax (497.8ms)
+Completed 200 OK in 657ms (Views: 584.8ms | ActiveRecord: 34.7ms)
+
+
+Started PUT "/admin/book/69/edit" for 127.0.0.1 at 2017-03-23 13:20:36 +0200
+Processing by RailsAdmin::MainController#edit as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fAO2pWNwFVU6rVE/Tv6GZmUNZUX+IMByXvqrJN90I/ymEE7M8aoyOnLdouybLRTSJeBAVaHv+upSEvLZ3hAF5g==", "book"=>{"title"=>"Ultra Demon", "desc"=>"Est sed cupiditate a culpa at. Pariatur doloremque molestias ea omnis ipsam. Id dolorem ipsum ipsam cupiditate at molestias quasi. Natus mollitia vero ab dolor minima consequatur. Sit omnis iste veniam aut.", "price"=>"17.63", "count"=>"186", "category_id"=>"5", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x007f7dd7355f28 @tempfile=#<Tempfile:/tmp/RackMultipart20170323-13170-3cuij2.png>, @original_filename="9781784398224.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"book[avatar]\"; filename=\"9781784398224.png\"\r\nContent-Type: image/png\r\n">, "avatar_cache"=>"", "dimension"=>"{\r\n  \"h\": 7.3,\r\n  \"w\": 4.4,\r\n  \"d\": 10.0\r\n}", "picture_ids"=>["", "", "4"], "review_ids"=>["", ""], "author_ids"=>["", "", "19", "20"], "material_ids"=>["", "", "4"]}, "return_to"=>"http://localhost:3000/admin/book", "_save"=>"", "model_name"=>"book", "id"=>"69"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBook Load (17.7ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "authors_books" ON "authors_books"."book_id" = "books"."id" INNER JOIN "authors" ON "authors"."id" = "authors_books"."author_id" INNER JOIN "pictures" ON "pictures"."imageable_id" = "books"."id" AND "pictures"."imageable_type" = $1 INNER JOIN "books_materials" ON "books_materials"."book_id" = "books"."id" INNER JOIN "materials" ON "materials"."id" = "books_materials"."material_id" INNER JOIN "reviews" ON "reviews"."book_id" = "books"."id" AND "reviews"."state" = $2 INNER JOIN "users" ON "users"."id" = "reviews"."user_id"[0m  [["imageable_type", "Book"], ["state", "approved"]]
+  [1m[36mBook Load (0.9ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 ORDER BY "books"."id" ASC LIMIT $2[0m  [["id", 69], ["LIMIT", 1]]
+  [1m[36mPicture Load (4.2ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures" WHERE "pictures"."id" = 4[0m
+  [1m[36mPicture Load (0.5ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures" WHERE "pictures"."imageable_id" = $1 AND "pictures"."imageable_type" = $2[0m  [["imageable_id", 69], ["imageable_type", "Book"]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[33mUPDATE "pictures" SET "imageable_id" = $1, "imageable_type" = $2, "updated_at" = $3 WHERE "pictures"."id" = $4[0m  [["imageable_id", 69], ["imageable_type", "Book"], ["updated_at", 2017-03-23 11:20:36 UTC], ["id", 4]]
+  [1m[35m (23.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE 1=0[0m
+  [1m[36mReview Load (1.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."book_id" = $1 AND "reviews"."state" = $2[0m  [["book_id", 69], ["state", "approved"]]
+  [1m[36mAuthor Load (2.4ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (19, 20)[0m
+  [1m[36mAuthor Load (1.1ms)[0m  [1m[34mSELECT "authors".* FROM "authors" INNER JOIN "authors_books" ON "authors"."id" = "authors_books"."author_id" WHERE "authors_books"."book_id" = $1[0m  [["book_id", 69]]
+  [1m[36mMaterial Load (0.7ms)[0m  [1m[34mSELECT "materials".* FROM "materials" WHERE "materials"."id" = 4[0m
+  [1m[36mMaterial Load (0.7ms)[0m  [1m[34mSELECT "materials".* FROM "materials" INNER JOIN "books_materials" ON "materials"."id" = "books_materials"."material_id" WHERE "books_materials"."book_id" = $1[0m  [["book_id", 69]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAuthor Exists (2.5ms)[0m  [1m[34mSELECT  1 AS one FROM "authors" WHERE "authors"."first_name" = $1 AND ("authors"."id" != $2) AND "authors"."last_name" = $3 LIMIT $4[0m  [["first_name", "Dalene"], ["id", 19], ["last_name", "Torphy"], ["LIMIT", 1]]
+  [1m[36mAuthor Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "authors" WHERE "authors"."first_name" = $1 AND ("authors"."id" != $2) AND "authors"."last_name" = $3 LIMIT $4[0m  [["first_name", "Felicidad"], ["id", 20], ["last_name", "Hammes"], ["LIMIT", 1]]
+  [1m[35mSQL (1.2ms)[0m  [1m[33mUPDATE "books" SET "avatar" = $1, "updated_at" = $2 WHERE "books"."id" = $3[0m  [["avatar", "9781784398224.png"], ["updated_at", 2017-03-23 11:20:36 UTC], ["id", 69]]
+  [1m[35m (29.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/admin/book
+Completed 302 Found in 260ms (ActiveRecord: 91.3ms)
+
+
+Started GET "/admin/book" for 127.0.0.1 at 2017-03-23 13:20:36 +0200
+Processing by RailsAdmin::MainController#index as HTML
+  Parameters: {"model_name"=>"book"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBook Load (15.9ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "authors_books" ON "authors_books"."book_id" = "books"."id" INNER JOIN "authors" ON "authors"."id" = "authors_books"."author_id" INNER JOIN "pictures" ON "pictures"."imageable_id" = "books"."id" AND "pictures"."imageable_type" = $1 INNER JOIN "books_materials" ON "books_materials"."book_id" = "books"."id" INNER JOIN "materials" ON "materials"."id" = "books_materials"."material_id" INNER JOIN "reviews" ON "reviews"."book_id" = "books"."id" AND "reviews"."state" = $2 INNER JOIN "users" ON "users"."id" = "reviews"."user_id"[0m  [["imageable_type", "Book"], ["state", "approved"]]
+  Rendering /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/index.html.haml within layouts/rails_admin/application
+  [1m[36mBook Load (1.0ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE ('t'='t') ORDER BY books.id desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  [1m[36mCategory Load (2.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN (5, 4)[0m
+  [1m[36mHABTM_Authors Load (2.2ms)[0m  [1m[34mSELECT "authors_books".* FROM "authors_books" WHERE "authors_books"."book_id" IN (70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51)[0m
+  [1m[36mAuthor Load (0.7ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (19, 20, 18)[0m
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "books" WHERE ('t'='t')[0m
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/index.html.haml within layouts/rails_admin/application (646.7ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/_secondary_navigation.html.haml (9.5ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/_navigation.html.haml (17.5ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/_sidebar_navigation.html.haml (32.7ms)
+  Rendering /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/pjax.html.haml
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/pjax.html.haml (14.5ms)
+Completed 200 OK in 1106ms (Views: 1045.7ms | ActiveRecord: 24.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-03-23 13:28:36 +0200
+Processing by MainPagesController#home as HTML
+  [1m[36mCategory Load (1.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."title" = $1 LIMIT $2[0m  [["title", "Mobile"], ["LIMIT", 1]]
+  [1m[36mBook Load (2.6ms)[0m  [1m[34mSELECT  "books".* FROM "books" INNER JOIN "categories" ON "categories"."id" = "books"."category_id" INNER JOIN "order_items" ON "order_items"."book_id" = "books"."id" INNER JOIN "orders" ON "orders"."id" = "order_items"."order_id" WHERE (lower(categories.title) = 'mobile') AND "orders"."state" = $1 GROUP BY order_items.book_id, books.id ORDER BY SUM(order_items.quantity) desc LIMIT $2[0m  [["state", "delivered"], ["LIMIT", 4]]
+  [1m[36mHABTM_Authors Load (1.2ms)[0m  [1m[34mSELECT "authors_books".* FROM "authors_books" WHERE "authors_books"."book_id" IN (4, 8, 7)[0m
+  [1m[36mAuthor Load (0.6ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (20, 18, 19)[0m
+  Rendering main_pages/home.html.haml within layouts/application
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "books" INNER JOIN "categories" ON "categories"."id" = "books"."category_id" WHERE (lower(categories.title) = 'mobile') LIMIT $1) subquery_for_count[0m  [["LIMIT", 4]]
+  [1m[36mBook Load (1.2ms)[0m  [1m[34mSELECT  "books".* FROM "books" INNER JOIN "categories" ON "categories"."id" = "books"."category_id" WHERE (lower(categories.title) = 'mobile') ORDER BY "books"."created_at" DESC LIMIT $1[0m  [["LIMIT", 4]]
+  [1m[36mHABTM_Authors Load (0.6ms)[0m  [1m[34mSELECT "authors_books".* FROM "authors_books" WHERE "authors_books"."book_id" IN (19, 18, 17, 16)[0m
+  [1m[36mAuthor Load (0.6ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (18, 19, 20)[0m
+  Rendered books/_carousel_books.html.haml (51.4ms)
+  Rendered books/_book_buttons.html.haml (3.6ms)
+  Rendered books/_book_buttons.html.haml (1.7ms)
+  Rendered books/_book_buttons.html.haml (1.4ms)
+  Rendered main_pages/home.html.haml within layouts/application (101.9ms)
+  [1m[36mOrder Load (0.7ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 AND "orders"."state" = $2 LIMIT $3[0m  [["id", 5], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.7ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."state" = $2 ORDER BY "orders"."id" DESC LIMIT $3[0m  [["user_id", 2], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.8ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1 ORDER BY "order_items"."created_at" ASC[0m  [["order_id", 5]]
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered layouts/_collapse_ul.html.haml (5.2ms)
+  Rendered layouts/_collapse_ul.html.haml (1.4ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (5.6ms)
+  Rendered layouts/_collapse_ul.html.haml (7.7ms)
+  [1m[36mBook Load (9.6ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "authors_books" ON "authors_books"."book_id" = "books"."id" INNER JOIN "authors" ON "authors"."id" = "authors_books"."author_id" INNER JOIN "pictures" ON "pictures"."imageable_id" = "books"."id" AND "pictures"."imageable_type" = $1 INNER JOIN "books_materials" ON "books_materials"."book_id" = "books"."id" INNER JOIN "materials" ON "materials"."id" = "books_materials"."material_id" INNER JOIN "reviews" ON "reviews"."book_id" = "books"."id" AND "reviews"."state" = $2 INNER JOIN "users" ON "users"."id" = "reviews"."user_id"[0m  [["imageable_type", "Book"], ["state", "approved"]]
+  Rendered layouts/_collapse_ul.html.haml (15.0ms)
+  Rendered layouts/_navbar.html.haml (40.8ms)
+  Rendered layouts/_dropdown_ul.html.haml (3.2ms)
+  Rendered layouts/_dropdown_ul.html.haml (1.3ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (4.0ms)
+  Rendered layouts/_dropdown_ul.html.haml (6.0ms)
+  Rendered layouts/_dropdown_ul.html.haml (1.3ms)
+  Rendered layouts/_navbar.html.haml (15.8ms)
+  Rendered layouts/_header.html.haml (93.5ms)
+  Rendered layouts/_footer.html.haml (6.5ms)
+Completed 200 OK in 392ms (Views: 350.8ms | ActiveRecord: 22.1ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2017-03-23 13:28:45 +0200
+Processing by RailsAdmin::MainController#dashboard as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBook Load (11.2ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "authors_books" ON "authors_books"."book_id" = "books"."id" INNER JOIN "authors" ON "authors"."id" = "authors_books"."author_id" INNER JOIN "pictures" ON "pictures"."imageable_id" = "books"."id" AND "pictures"."imageable_type" = $1 INNER JOIN "books_materials" ON "books_materials"."book_id" = "books"."id" INNER JOIN "materials" ON "materials"."id" = "books_materials"."material_id" INNER JOIN "reviews" ON "reviews"."book_id" = "books"."id" AND "reviews"."state" = $2 INNER JOIN "users" ON "users"."id" = "reviews"."user_id"[0m  [["imageable_type", "Book"], ["state", "approved"]]
+  [1m[35m (2.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "addresses"[0m
+  [1m[36mAddress Load (2.6ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" ORDER BY "addresses"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "authors"[0m
+  [1m[36mAuthor Load (1.2ms)[0m  [1m[34mSELECT  "authors".* FROM "authors" ORDER BY "authors"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "books" WHERE ('t'='t')[0m
+  [1m[36mBook Load (0.5ms)[0m  [1m[34mSELECT  "books".* FROM "books" ORDER BY "books"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "categories" WHERE ('t'='t')[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "countries"[0m
+  [1m[36mCountry Load (0.5ms)[0m  [1m[34mSELECT  "countries".* FROM "countries" ORDER BY "countries"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "coupons"[0m
+  [1m[36mCoupon Load (0.5ms)[0m  [1m[34mSELECT  "coupons".* FROM "coupons" ORDER BY "coupons"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "deliveries"[0m
+  [1m[36mDelivery Load (0.7ms)[0m  [1m[34mSELECT  "deliveries".* FROM "deliveries" ORDER BY "deliveries"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "materials"[0m
+  [1m[36mMaterial Load (4.6ms)[0m  [1m[34mSELECT  "materials".* FROM "materials" ORDER BY "materials"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (3.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE ('t'='t')[0m
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" ORDER BY "orders"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.5ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" ORDER BY "pictures"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews" WHERE ('t'='t')[0m
+  [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT  "reviews".* FROM "reviews" ORDER BY "reviews"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE ('t'='t')[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendering /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application (83.5ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/_secondary_navigation.html.haml (5.9ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/_navigation.html.haml (11.5ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/_sidebar_navigation.html.haml (20.7ms)
+  Rendering /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/pjax.html.haml
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/pjax.html.haml (5.6ms)
+Completed 200 OK in 427ms (Views: 321.9ms | ActiveRecord: 37.7ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2017-03-23 13:28:45 +0200
+Processing by RailsAdmin::MainController#dashboard as HTML
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBook Load (9.2ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "authors_books" ON "authors_books"."book_id" = "books"."id" INNER JOIN "authors" ON "authors"."id" = "authors_books"."author_id" INNER JOIN "pictures" ON "pictures"."imageable_id" = "books"."id" AND "pictures"."imageable_type" = $1 INNER JOIN "books_materials" ON "books_materials"."book_id" = "books"."id" INNER JOIN "materials" ON "materials"."id" = "books_materials"."material_id" INNER JOIN "reviews" ON "reviews"."book_id" = "books"."id" AND "reviews"."state" = $2 INNER JOIN "users" ON "users"."id" = "reviews"."user_id"[0m  [["imageable_type", "Book"], ["state", "approved"]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "addresses"[0m
+  [1m[36mAddress Load (0.6ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" ORDER BY "addresses"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "authors"[0m
+  [1m[36mAuthor Load (0.6ms)[0m  [1m[34mSELECT  "authors".* FROM "authors" ORDER BY "authors"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "books" WHERE ('t'='t')[0m
+  [1m[36mBook Load (0.8ms)[0m  [1m[34mSELECT  "books".* FROM "books" ORDER BY "books"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "categories" WHERE ('t'='t')[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" ORDER BY "categories"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "countries"[0m
+  [1m[36mCountry Load (0.4ms)[0m  [1m[34mSELECT  "countries".* FROM "countries" ORDER BY "countries"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "coupons"[0m
+  [1m[36mCoupon Load (1.0ms)[0m  [1m[34mSELECT  "coupons".* FROM "coupons" ORDER BY "coupons"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "deliveries"[0m
+  [1m[36mDelivery Load (0.7ms)[0m  [1m[34mSELECT  "deliveries".* FROM "deliveries" ORDER BY "deliveries"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "materials"[0m
+  [1m[36mMaterial Load (0.5ms)[0m  [1m[34mSELECT  "materials".* FROM "materials" ORDER BY "materials"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "orders" WHERE ('t'='t')[0m
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" ORDER BY "orders"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  [1m[36mPicture Load (0.4ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" ORDER BY "pictures"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews" WHERE ('t'='t')[0m
+  [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT  "reviews".* FROM "reviews" ORDER BY "reviews"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users" WHERE ('t'='t')[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendering /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application (55.6ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/_secondary_navigation.html.haml (5.7ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/_navigation.html.haml (11.0ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/_sidebar_navigation.html.haml (19.1ms)
+  Rendering /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/pjax.html.haml
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/pjax.html.haml (5.3ms)
+Completed 200 OK in 387ms (Views: 288.7ms | ActiveRecord: 24.9ms)
+
+
+Started GET "/admin/picture?_pjax=%5Bdata-pjax-container%5D" for 127.0.0.1 at 2017-03-23 13:28:51 +0200
+Processing by RailsAdmin::MainController#index as HTML
+  Parameters: {"_pjax"=>"[data-pjax-container]", "model_name"=>"picture"}
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBook Load (12.6ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "authors_books" ON "authors_books"."book_id" = "books"."id" INNER JOIN "authors" ON "authors"."id" = "authors_books"."author_id" INNER JOIN "pictures" ON "pictures"."imageable_id" = "books"."id" AND "pictures"."imageable_type" = $1 INNER JOIN "books_materials" ON "books_materials"."book_id" = "books"."id" INNER JOIN "materials" ON "materials"."id" = "books_materials"."material_id" INNER JOIN "reviews" ON "reviews"."book_id" = "books"."id" AND "reviews"."state" = $2 INNER JOIN "users" ON "users"."id" = "reviews"."user_id"[0m  [["imageable_type", "Book"], ["state", "approved"]]
+  Rendering /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/index.html.haml within layouts/rails_admin/pjax
+  [1m[36mPicture Load (1.1ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" ORDER BY pictures.id desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  [1m[36mBook Load (3.6ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 69], ["LIMIT", 1]]
+  [1m[36mBook Load (0.8ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 18], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "pictures"[0m
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/index.html.haml within layouts/rails_admin/pjax (100.0ms)
+Completed 200 OK in 154ms (Views: 110.5ms | ActiveRecord: 21.2ms)
+
+
+Started GET "/admin/book?_pjax=%5Bdata-pjax-container%5D" for 127.0.0.1 at 2017-03-23 13:28:56 +0200
+Processing by RailsAdmin::MainController#index as HTML
+  Parameters: {"_pjax"=>"[data-pjax-container]", "model_name"=>"book"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBook Load (13.6ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "authors_books" ON "authors_books"."book_id" = "books"."id" INNER JOIN "authors" ON "authors"."id" = "authors_books"."author_id" INNER JOIN "pictures" ON "pictures"."imageable_id" = "books"."id" AND "pictures"."imageable_type" = $1 INNER JOIN "books_materials" ON "books_materials"."book_id" = "books"."id" INNER JOIN "materials" ON "materials"."id" = "books_materials"."material_id" INNER JOIN "reviews" ON "reviews"."book_id" = "books"."id" AND "reviews"."state" = $2 INNER JOIN "users" ON "users"."id" = "reviews"."user_id"[0m  [["imageable_type", "Book"], ["state", "approved"]]
+  Rendering /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/index.html.haml within layouts/rails_admin/pjax
+  [1m[36mBook Load (0.8ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE ('t'='t') ORDER BY books.id desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  [1m[36mCategory Load (1.2ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN (5, 4)[0m
+  [1m[36mHABTM_Authors Load (0.6ms)[0m  [1m[34mSELECT "authors_books".* FROM "authors_books" WHERE "authors_books"."book_id" IN (70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51)[0m
+  [1m[36mAuthor Load (0.6ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (19, 20, 18)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "books" WHERE ('t'='t')[0m
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/index.html.haml within layouts/rails_admin/pjax (382.2ms)
+Completed 200 OK in 443ms (Views: 395.7ms | ActiveRecord: 18.2ms)
+
+
+Started GET "/admin/book?all=true&model_name=book&_pjax=%5Bdata-pjax-container%5D" for 127.0.0.1 at 2017-03-23 13:29:06 +0200
+Processing by RailsAdmin::MainController#index as HTML
+  Parameters: {"all"=>"true", "model_name"=>"book", "_pjax"=>"[data-pjax-container]"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBook Load (10.5ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "authors_books" ON "authors_books"."book_id" = "books"."id" INNER JOIN "authors" ON "authors"."id" = "authors_books"."author_id" INNER JOIN "pictures" ON "pictures"."imageable_id" = "books"."id" AND "pictures"."imageable_type" = $1 INNER JOIN "books_materials" ON "books_materials"."book_id" = "books"."id" INNER JOIN "materials" ON "materials"."id" = "books_materials"."material_id" INNER JOIN "reviews" ON "reviews"."book_id" = "books"."id" AND "reviews"."state" = $2 INNER JOIN "users" ON "users"."id" = "reviews"."user_id"[0m  [["imageable_type", "Book"], ["state", "approved"]]
+  Rendering /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/index.html.haml within layouts/rails_admin/pjax
+  [1m[36mBook Load (1.4ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE ('t'='t') ORDER BY books.id desc[0m
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN (5, 4, 3, 2, 1)[0m
+  [1m[36mHABTM_Authors Load (2.8ms)[0m  [1m[34mSELECT "authors_books".* FROM "authors_books" WHERE "authors_books"."book_id" IN (70, 69, 68, 67, 66, 65, 64, 63, 62, 61, 60, 59, 58, 57, 56, 55, 54, 53, 52, 51, 50, 49, 48, 47, 46, 45, 44, 43, 42, 41, 40, 39, 38, 37, 36, 35, 34, 33, 32, 31, 30, 29, 28, 27, 26, 25, 24, 23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1)[0m
+  [1m[36mAuthor Load (0.6ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (19, 20, 18)[0m
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/index.html.haml within layouts/rails_admin/pjax (1186.5ms)
+Completed 200 OK in 1244ms (Views: 1199.3ms | ActiveRecord: 16.5ms)
+
+
+Started GET "/admin/book?all=true&model_name=book&sort=title&_pjax=%5Bdata-pjax-container%5D" for 127.0.0.1 at 2017-03-23 13:29:17 +0200
+Processing by RailsAdmin::MainController#index as HTML
+  Parameters: {"all"=>"true", "model_name"=>"book", "sort"=>"title", "_pjax"=>"[data-pjax-container]"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBook Load (11.4ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "authors_books" ON "authors_books"."book_id" = "books"."id" INNER JOIN "authors" ON "authors"."id" = "authors_books"."author_id" INNER JOIN "pictures" ON "pictures"."imageable_id" = "books"."id" AND "pictures"."imageable_type" = $1 INNER JOIN "books_materials" ON "books_materials"."book_id" = "books"."id" INNER JOIN "materials" ON "materials"."id" = "books_materials"."material_id" INNER JOIN "reviews" ON "reviews"."book_id" = "books"."id" AND "reviews"."state" = $2 INNER JOIN "users" ON "users"."id" = "reviews"."user_id"[0m  [["imageable_type", "Book"], ["state", "approved"]]
+  Rendering /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/index.html.haml within layouts/rails_admin/pjax
+  [1m[36mBook Load (1.6ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE ('t'='t') ORDER BY books.title asc[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN (3, 1, 4, 2, 5)[0m
+  [1m[36mHABTM_Authors Load (0.9ms)[0m  [1m[34mSELECT "authors_books".* FROM "authors_books" WHERE "authors_books"."book_id" IN (46, 18, 58, 45, 10, 37, 13, 44, 38, 63, 36, 8, 28, 32, 70, 41, 14, 26, 23, 61, 64, 7, 40, 35, 43, 3, 6, 67, 9, 21, 25, 5, 60, 49, 51, 66, 12, 55, 4, 65, 1, 42, 50, 57, 62, 22, 29, 11, 19, 54, 59, 30, 33, 27, 17, 52, 24, 34, 56, 16, 48, 2, 15, 68, 31, 20, 53, 69, 47, 39)[0m
+  [1m[36mAuthor Load (0.6ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (20, 18, 19)[0m
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/index.html.haml within layouts/rails_admin/pjax (1110.6ms)
+Completed 200 OK in 1167ms (Views: 1121.8ms | ActiveRecord: 15.6ms)
+
+
+Started GET "/admin/book/17/edit?_pjax=%5Bdata-pjax-container%5D" for 127.0.0.1 at 2017-03-23 13:29:38 +0200
+Processing by RailsAdmin::MainController#edit as HTML
+  Parameters: {"_pjax"=>"[data-pjax-container]", "model_name"=>"book", "id"=>"17"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBook Load (11.7ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "authors_books" ON "authors_books"."book_id" = "books"."id" INNER JOIN "authors" ON "authors"."id" = "authors_books"."author_id" INNER JOIN "pictures" ON "pictures"."imageable_id" = "books"."id" AND "pictures"."imageable_type" = $1 INNER JOIN "books_materials" ON "books_materials"."book_id" = "books"."id" INNER JOIN "materials" ON "materials"."id" = "books_materials"."material_id" INNER JOIN "reviews" ON "reviews"."book_id" = "books"."id" AND "reviews"."state" = $2 INNER JOIN "users" ON "users"."id" = "reviews"."user_id"[0m  [["imageable_type", "Book"], ["state", "approved"]]
+  [1m[36mBook Load (1.3ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 ORDER BY "books"."id" ASC LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  Rendering /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/edit.html.haml within layouts/rails_admin/pjax
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/_form_field.html.haml (1.5ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/_form_text.html.haml (4.9ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/_form_field.html.haml (0.4ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/_form_field.html.haml (0.4ms)
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCategory Load (0.7ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE ('t'='t') ORDER BY categories.id desc[0m
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/_form_filtering_select.html.haml (18.7ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/_form_file_upload.html.haml (3.3ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/_form_text.html.haml (0.5ms)
+  [1m[36mPicture Load (0.7ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures" WHERE "pictures"."imageable_id" = $1 AND "pictures"."imageable_type" = $2[0m  [["imageable_id", 17], ["imageable_type", "Book"]]
+  [1m[36mPicture Load (0.6ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures" ORDER BY pictures.id desc[0m
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/_form_filtering_multiselect.html.haml (25.4ms)
+  [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."book_id" = $1 AND "reviews"."state" = $2[0m  [["book_id", 17], ["state", "approved"]]
+  [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE ('t'='t') ORDER BY reviews.id desc[0m
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/_form_filtering_multiselect.html.haml (11.1ms)
+  [1m[36mAuthor Load (2.8ms)[0m  [1m[34mSELECT "authors".* FROM "authors" INNER JOIN "authors_books" ON "authors"."id" = "authors_books"."author_id" WHERE "authors_books"."book_id" = $1[0m  [["book_id", 17]]
+  [1m[36mAuthor Load (0.6ms)[0m  [1m[34mSELECT "authors".* FROM "authors" ORDER BY authors.id desc[0m
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/_form_filtering_multiselect.html.haml (15.7ms)
+  [1m[36mMaterial Load (0.8ms)[0m  [1m[34mSELECT "materials".* FROM "materials" INNER JOIN "books_materials" ON "materials"."id" = "books_materials"."material_id" WHERE "books_materials"."book_id" = $1[0m  [["book_id", 17]]
+  [1m[36mMaterial Load (0.9ms)[0m  [1m[34mSELECT "materials".* FROM "materials" ORDER BY materials.id desc[0m
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/_form_filtering_multiselect.html.haml (14.2ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/_submit_buttons.html.haml (10.5ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/edit.html.haml within layouts/rails_admin/pjax (155.4ms)
+Completed 200 OK in 224ms (Views: 167.2ms | ActiveRecord: 22.7ms)
+
+
+Started PUT "/admin/book/17/edit" for 127.0.0.1 at 2017-03-23 13:29:56 +0200
+Processing by RailsAdmin::MainController#edit as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"imL1kqyHV/S7QN/PJC+k0b750/PcDYJoegMKLM3RYzNQcQ37Pl1wm/MwLBzx/DZl/hT244PCuPB261PRzLVFKQ==", "book"=>{"title"=>"Return of the Champagne Monster", "desc"=>"Temporibus est ad dolore explicabo quia cumque eum. Ex eum amet eligendi qui laborum. Sunt sit culpa voluptates et quasi quos suscipit. Sint dignissimos et at recusandae. Neque natus repudiandae enim minus corporis.", "price"=>"13.73", "count"=>"170", "category_id"=>"1", "avatar"=>#<ActionDispatch::Http::UploadedFile:0x007f7dcd8403f8 @tempfile=#<Tempfile:/tmp/RackMultipart20170323-13170-1e9p5mp.jpg>, @original_filename="smashing-book-5-marc-2-large.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"book[avatar]\"; filename=\"smashing-book-5-marc-2-large.jpg\"\r\nContent-Type: image/jpeg\r\n">, "avatar_cache"=>"", "dimension"=>"{\r\n  \"h\": 8.5,\r\n  \"w\": 4.4,\r\n  \"d\": 10.0\r\n}", "picture_ids"=>["", "", "3"], "review_ids"=>["", ""], "author_ids"=>["", "", "18", "19", "20"], "material_ids"=>["", "", "2", "3", "4"]}, "return_to"=>"http://localhost:3000/admin/book?all=true&model_name=book&sort=title", "_save"=>"", "model_name"=>"book", "id"=>"17"}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBook Load (10.4ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "authors_books" ON "authors_books"."book_id" = "books"."id" INNER JOIN "authors" ON "authors"."id" = "authors_books"."author_id" INNER JOIN "pictures" ON "pictures"."imageable_id" = "books"."id" AND "pictures"."imageable_type" = $1 INNER JOIN "books_materials" ON "books_materials"."book_id" = "books"."id" INNER JOIN "materials" ON "materials"."id" = "books_materials"."material_id" INNER JOIN "reviews" ON "reviews"."book_id" = "books"."id" AND "reviews"."state" = $2 INNER JOIN "users" ON "users"."id" = "reviews"."user_id"[0m  [["imageable_type", "Book"], ["state", "approved"]]
+  [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 ORDER BY "books"."id" ASC LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mPicture Load (0.5ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures" WHERE "pictures"."id" = 3[0m
+  [1m[36mPicture Load (0.7ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures" WHERE "pictures"."imageable_id" = $1 AND "pictures"."imageable_type" = $2[0m  [["imageable_id", 17], ["imageable_type", "Book"]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "pictures" SET "imageable_id" = $1, "updated_at" = $2 WHERE "pictures"."id" = $3[0m  [["imageable_id", 17], ["updated_at", 2017-03-23 11:29:56 UTC], ["id", 3]]
+  [1m[35m (34.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE 1=0[0m
+  [1m[36mReview Load (0.7ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."book_id" = $1 AND "reviews"."state" = $2[0m  [["book_id", 17], ["state", "approved"]]
+  [1m[36mAuthor Load (0.7ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (18, 19, 20)[0m
+  [1m[36mAuthor Load (1.0ms)[0m  [1m[34mSELECT "authors".* FROM "authors" INNER JOIN "authors_books" ON "authors"."id" = "authors_books"."author_id" WHERE "authors_books"."book_id" = $1[0m  [["book_id", 17]]
+  [1m[36mMaterial Load (0.8ms)[0m  [1m[34mSELECT "materials".* FROM "materials" WHERE "materials"."id" IN (2, 3, 4)[0m
+  [1m[36mMaterial Load (0.8ms)[0m  [1m[34mSELECT "materials".* FROM "materials" INNER JOIN "books_materials" ON "materials"."id" = "books_materials"."material_id" WHERE "books_materials"."book_id" = $1[0m  [["book_id", 17]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAuthor Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "authors" WHERE "authors"."first_name" = $1 AND ("authors"."id" != $2) AND "authors"."last_name" = $3 LIMIT $4[0m  [["first_name", "Roland"], ["id", 18], ["last_name", "Klein"], ["LIMIT", 1]]
+  [1m[36mAuthor Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "authors" WHERE "authors"."first_name" = $1 AND ("authors"."id" != $2) AND "authors"."last_name" = $3 LIMIT $4[0m  [["first_name", "Dalene"], ["id", 19], ["last_name", "Torphy"], ["LIMIT", 1]]
+  [1m[36mAuthor Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "authors" WHERE "authors"."first_name" = $1 AND ("authors"."id" != $2) AND "authors"."last_name" = $3 LIMIT $4[0m  [["first_name", "Felicidad"], ["id", 20], ["last_name", "Hammes"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[33mUPDATE "books" SET "avatar" = $1, "updated_at" = $2 WHERE "books"."id" = $3[0m  [["avatar", "smashing-book-5-marc-2-large.jpg"], ["updated_at", 2017-03-23 11:29:56 UTC], ["id", 17]]
+  [1m[35m (4.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/admin/book?all=true&model_name=book&sort=title
+Completed 302 Found in 173ms (ActiveRecord: 61.4ms)
+
+
+Started GET "/admin/book?all=true&model_name=book&sort=title" for 127.0.0.1 at 2017-03-23 13:29:56 +0200
+Processing by RailsAdmin::MainController#index as HTML
+  Parameters: {"all"=>"true", "model_name"=>"book", "sort"=>"title"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBook Load (8.6ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "authors_books" ON "authors_books"."book_id" = "books"."id" INNER JOIN "authors" ON "authors"."id" = "authors_books"."author_id" INNER JOIN "pictures" ON "pictures"."imageable_id" = "books"."id" AND "pictures"."imageable_type" = $1 INNER JOIN "books_materials" ON "books_materials"."book_id" = "books"."id" INNER JOIN "materials" ON "materials"."id" = "books_materials"."material_id" INNER JOIN "reviews" ON "reviews"."book_id" = "books"."id" AND "reviews"."state" = $2 INNER JOIN "users" ON "users"."id" = "reviews"."user_id"[0m  [["imageable_type", "Book"], ["state", "approved"]]
+  Rendering /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/index.html.haml within layouts/rails_admin/application
+  [1m[36mBook Load (1.5ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE ('t'='t') ORDER BY books.title asc[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories" WHERE "categories"."id" IN (3, 1, 4, 2, 5)[0m
+  [1m[36mHABTM_Authors Load (1.1ms)[0m  [1m[34mSELECT "authors_books".* FROM "authors_books" WHERE "authors_books"."book_id" IN (46, 18, 58, 45, 10, 37, 13, 44, 38, 63, 36, 8, 28, 32, 70, 41, 14, 26, 23, 61, 64, 7, 40, 35, 43, 3, 6, 67, 9, 21, 25, 5, 60, 49, 51, 66, 12, 55, 4, 65, 1, 42, 50, 57, 62, 22, 29, 11, 19, 54, 59, 30, 33, 27, 17, 52, 24, 34, 56, 16, 48, 2, 15, 68, 31, 20, 53, 69, 47, 39)[0m
+  [1m[36mAuthor Load (0.9ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (20, 18, 19)[0m
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/rails_admin/main/index.html.haml within layouts/rails_admin/application (1003.6ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/_secondary_navigation.html.haml (6.7ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/_navigation.html.haml (12.8ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/_sidebar_navigation.html.haml (22.5ms)
+  Rendering /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/pjax.html.haml
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/rails_admin-1.1.1/app/views/layouts/rails_admin/pjax.html.haml (10.7ms)
+Completed 200 OK in 1326ms (Views: 1287.3ms | ActiveRecord: 13.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-03-23 13:31:02 +0200
+Processing by MainPagesController#home as HTML
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."title" = $1 LIMIT $2[0m  [["title", "Mobile"], ["LIMIT", 1]]
+  [1m[36mBook Load (2.8ms)[0m  [1m[34mSELECT  "books".* FROM "books" INNER JOIN "categories" ON "categories"."id" = "books"."category_id" INNER JOIN "order_items" ON "order_items"."book_id" = "books"."id" INNER JOIN "orders" ON "orders"."id" = "order_items"."order_id" WHERE (lower(categories.title) = 'mobile') AND "orders"."state" = $1 GROUP BY order_items.book_id, books.id ORDER BY SUM(order_items.quantity) desc LIMIT $2[0m  [["state", "delivered"], ["LIMIT", 4]]
+  [1m[36mHABTM_Authors Load (0.6ms)[0m  [1m[34mSELECT "authors_books".* FROM "authors_books" WHERE "authors_books"."book_id" IN (4, 8, 7)[0m
+  [1m[36mAuthor Load (0.6ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (20, 18, 19)[0m
+  Rendering main_pages/home.html.haml within layouts/application
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "books" INNER JOIN "categories" ON "categories"."id" = "books"."category_id" WHERE (lower(categories.title) = 'mobile') LIMIT $1) subquery_for_count[0m  [["LIMIT", 4]]
+  [1m[36mBook Load (1.4ms)[0m  [1m[34mSELECT  "books".* FROM "books" INNER JOIN "categories" ON "categories"."id" = "books"."category_id" WHERE (lower(categories.title) = 'mobile') ORDER BY "books"."created_at" DESC LIMIT $1[0m  [["LIMIT", 4]]
+  [1m[36mHABTM_Authors Load (3.1ms)[0m  [1m[34mSELECT "authors_books".* FROM "authors_books" WHERE "authors_books"."book_id" IN (19, 18, 17, 16)[0m
+  [1m[36mAuthor Load (0.6ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (18, 19, 20)[0m
+  Rendered books/_carousel_books.html.haml (58.2ms)
+  Rendered books/_book_buttons.html.haml (4.5ms)
+  Rendered books/_book_buttons.html.haml (1.1ms)
+  Rendered books/_book_buttons.html.haml (1.1ms)
+  Rendered main_pages/home.html.haml within layouts/application (89.2ms)
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 AND "orders"."state" = $2 LIMIT $3[0m  [["id", 5], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.7ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."state" = $2 ORDER BY "orders"."id" DESC LIMIT $3[0m  [["user_id", 2], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.6ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1 ORDER BY "order_items"."created_at" ASC[0m  [["order_id", 5]]
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered layouts/_collapse_ul.html.haml (4.5ms)
+  Rendered layouts/_collapse_ul.html.haml (1.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (7.2ms)
+  Rendered layouts/_collapse_ul.html.haml (9.8ms)
+  [1m[36mBook Load (10.9ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "authors_books" ON "authors_books"."book_id" = "books"."id" INNER JOIN "authors" ON "authors"."id" = "authors_books"."author_id" INNER JOIN "pictures" ON "pictures"."imageable_id" = "books"."id" AND "pictures"."imageable_type" = $1 INNER JOIN "books_materials" ON "books_materials"."book_id" = "books"."id" INNER JOIN "materials" ON "materials"."id" = "books_materials"."material_id" INNER JOIN "reviews" ON "reviews"."book_id" = "books"."id" AND "reviews"."state" = $2 INNER JOIN "users" ON "users"."id" = "reviews"."user_id"[0m  [["imageable_type", "Book"], ["state", "approved"]]
+  Rendered layouts/_collapse_ul.html.haml (16.4ms)
+  Rendered layouts/_navbar.html.haml (41.2ms)
+  Rendered layouts/_dropdown_ul.html.haml (2.9ms)
+  Rendered layouts/_dropdown_ul.html.haml (1.6ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (4.7ms)
+  Rendered layouts/_dropdown_ul.html.haml (7.2ms)
+  Rendered layouts/_dropdown_ul.html.haml (1.4ms)
+  Rendered layouts/_navbar.html.haml (17.2ms)
+  Rendered layouts/_header.html.haml (78.8ms)
+  Rendered layouts/_footer.html.haml (6.9ms)
+Completed 200 OK in 360ms (Views: 318.7ms | ActiveRecord: 24.7ms)
+
+
+Started GET "/books/17" for 127.0.0.1 at 2017-03-23 13:31:26 +0200
+Processing by BooksController#show as HTML
+  Parameters: {"id"=>"17"}
+  [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 17], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mBook Load (11.9ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "authors_books" ON "authors_books"."book_id" = "books"."id" INNER JOIN "authors" ON "authors"."id" = "authors_books"."author_id" INNER JOIN "pictures" ON "pictures"."imageable_id" = "books"."id" AND "pictures"."imageable_type" = $1 INNER JOIN "books_materials" ON "books_materials"."book_id" = "books"."id" INNER JOIN "materials" ON "materials"."id" = "books_materials"."material_id" INNER JOIN "reviews" ON "reviews"."book_id" = "books"."id" AND "reviews"."state" = $2 INNER JOIN "users" ON "users"."id" = "reviews"."user_id"[0m  [["imageable_type", "Book"], ["state", "approved"]]
+  Rendering books/show.html.haml within layouts/application
+  [1m[36mPicture Load (0.9ms)[0m  [1m[34mSELECT  "pictures".* FROM "pictures" WHERE "pictures"."imageable_id" = $1 AND "pictures"."imageable_type" = $2 ORDER BY "pictures"."id" ASC LIMIT $3[0m  [["imageable_id", 17], ["imageable_type", "Book"], ["LIMIT", 1]]
+  [1m[36mPicture Load (0.5ms)[0m  [1m[34mSELECT "pictures".* FROM "pictures" WHERE "pictures"."imageable_id" = $1 AND "pictures"."imageable_type" = $2[0m  [["imageable_id", 17], ["imageable_type", "Book"]]
+  [1m[36mAuthor Load (0.6ms)[0m  [1m[34mSELECT "authors".* FROM "authors" INNER JOIN "authors_books" ON "authors"."id" = "authors_books"."author_id" WHERE "authors_books"."book_id" = $1[0m  [["book_id", 17]]
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mMaterial Load (0.7ms)[0m  [1m[34mSELECT "materials".* FROM "materials" INNER JOIN "books_materials" ON "materials"."id" = "books_materials"."material_id" WHERE "books_materials"."book_id" = $1[0m  [["book_id", 17]]
+  [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT "reviews".* FROM "reviews" WHERE "reviews"."book_id" = $1 AND "reviews"."state" = $2[0m  [["book_id", 17], ["state", "approved"]]
+  Rendered collection of templates [0 times] (0.0ms)
+  Rendered reviews/_form.html.haml (53.6ms)
+  Rendered books/show.html.haml within layouts/application (135.4ms)
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 AND "orders"."state" = $2 LIMIT $3[0m  [["id", 5], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.7ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."state" = $2 ORDER BY "orders"."id" DESC LIMIT $3[0m  [["user_id", 2], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.6ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1 ORDER BY "order_items"."created_at" ASC[0m  [["order_id", 5]]
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered layouts/_collapse_ul.html.haml (4.4ms)
+  Rendered layouts/_collapse_ul.html.haml (1.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (6.5ms)
+  Rendered layouts/_collapse_ul.html.haml (8.3ms)
+  Rendered layouts/_collapse_ul.html.haml (1.6ms)
+  Rendered layouts/_navbar.html.haml (24.8ms)
+  Rendered layouts/_dropdown_ul.html.haml (2.6ms)
+  Rendered layouts/_dropdown_ul.html.haml (1.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (3.7ms)
+  Rendered layouts/_dropdown_ul.html.haml (5.2ms)
+  Rendered layouts/_dropdown_ul.html.haml (1.4ms)
+  Rendered layouts/_navbar.html.haml (13.8ms)
+  Rendered layouts/_header.html.haml (56.4ms)
+  Rendered layouts/_footer.html.haml (6.7ms)
+Completed 200 OK in 449ms (Views: 307.5ms | ActiveRecord: 19.2ms)
+
+
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)

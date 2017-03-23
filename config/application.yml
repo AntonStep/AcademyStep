@@ -1,3 +1,12 @@
+
+#aws_access_key_id: 'AKIAIPB6DPLHAHKQWGIA'
+#aws_secret_access_key: '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'
+#config.fog_directory: 'bookstorestep2'
+
+
+
+
+
 aws_access_key_id: 'AKIAJ5RP2M5MDDPOHNAA'
 aws_secret_access_key: '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'
 config.fog_directory: 'bookstorestep2'
