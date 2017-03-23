@@ -12310,3 +12310,19 @@ Processing by BooksController#show as HTML
 Completed 200 OK in 374ms (Views: 225.8ms | ActiveRecord: 16.4ms)
 
 
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+  [1m[36mUser Load (28.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
