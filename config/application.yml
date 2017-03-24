@@ -1,12 +1,14 @@
+aws_access_key_id: "AKIAJ5RP2M5MDDPOHNAA"
+aws_secret_access_key: "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"
+config.fog_directory: "bookstorestep2"
 
-#aws_access_key_id: 'AKIAIPB6DPLHAHKQWGIA'
-#aws_secret_access_key: '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'
-#config.fog_directory: 'bookstorestep2'
+facebook_client_id: "322754198120390"
+facebook_client_secret: "e602f0060992911aef98d9eb9b4a0d85"
 
+google_client_id:  "811048789904-87jtookhbj4eisskmq334o0dph2lc7m3.apps.googleusercontent.com" 
+google_client_secret:  "gNEgfLI0B4D9CXXuFbpldizW" 
 
-
-
-
-aws_access_key_id: 'AKIAJ5RP2M5MDDPOHNAA'
-aws_secret_access_key: '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'
-config.fog_directory: 'bookstorestep2'
+gmail_username: "bookstorestep@gmail.com"
+gmail_password: "Password123456"
+mail_sender: "bookstorestep@gmail.com"
+mail_support: "bookstorestep@gmail.com"

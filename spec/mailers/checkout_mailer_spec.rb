@@ -14,7 +14,7 @@ describe CheckoutMailer, type: :mailer do
     end
 
     it 'renders the sender email' do
-      expect(mail.from).to eq(['rspecyaroslav@gmail.com'])
+      expect(mail.from).to eq(['bookstorestep@gmail.com'])
     end
 
     it 'assigns @name' do
