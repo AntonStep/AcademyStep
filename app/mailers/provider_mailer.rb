@@ -3,6 +3,6 @@ class ProviderMailer < ApplicationMailer
     @user = options[:user]
     @password = options[:password]
     @provider = options[:provider]
-    # mail to: @user.email, subject: 'Success authorize'
+    mail to: @user.email, subject: 'Success authorize'
   end
 end
