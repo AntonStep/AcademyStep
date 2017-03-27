@@ -62,13 +62,13 @@ Rails.application.configure do
   config.app_domain = "gmail.com"
 
   # Email
-  config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { host: config.app_domain }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_url_options = { host: 'salty-harbor-56049.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default :charset => "utf-8"
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
+    address: "smtp.gmail.com",  
     port: 587,
     domain: config.app_domain,
     authentication: :plain,
