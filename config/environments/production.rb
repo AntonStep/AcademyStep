@@ -62,21 +62,22 @@ Rails.application.configure do
   config.app_domain = "salty-harbor-56049.herokuapp.com"
 
   # Email
-  config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { host: 'https://salty-harbor-56049.herokuapp.com/' }
+
+
+ config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default_url_options = { host: 'salty-harbor-56049.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default :charset => "utf-8"
   config.action_mailer.smtp_settings = {
     address: "smtp.gmail.com",
     port: 587,
-    domain: 'salty-harbor-56049.herokuapp.com',
+    domain: 'gmail.com',
     authentication: :plain,
     enable_starttls_auto: true,
-    user_name: 'bookstorestep@gmail.com',
-    password: 'Password123456'
+    user_name: Figaro.env.gmail_username,
+    password: Figaro.env.gmail_password
   }
-
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
