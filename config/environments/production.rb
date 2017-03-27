@@ -59,22 +59,22 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "amazon_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
-  config.app_domain = "gmail.com"
+  config.app_domain = "salty-harbor-56049.herokuapp.com"
 
   # Email
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.default_url_options = { host: 'salty-harbor-56049.herokuapp.com' }
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default_url_options = { host: config.app_domain }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default :charset => "utf-8"
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",  
+    address: "smtp.gmail.com",
     port: 587,
-    domain: config.app_domain,
+    domain: 'salty-harbor-56049.herokuapp.com',
     authentication: :plain,
     enable_starttls_auto: true,
-    user_name: Figaro.env.gmail_username,
-    password: Figaro.env.gmail_password
+    user_name: 'bookstorestep@gmail.com',
+    password: 'Password123456'
   }
 
   # Ignore bad email addresses and do not raise email delivery errors.
