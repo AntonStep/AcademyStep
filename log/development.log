@@ -14276,3 +14276,322 @@ Processing by MainPagesController#home as HTML
 Completed 200 OK in 503ms (Views: 352.0ms | ActiveRecord: 138.9ms)
 
 
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+Started GET "/" for 127.0.0.1 at 2017-03-30 16:26:25 +0300
+  
+ActiveRecord::NoDatabaseError (FATAL:  role "anton" does not exist
+):
+  
+activerecord (5.0.1) lib/active_record/connection_adapters/postgresql_adapter.rb:675:in `rescue in connect'
+activerecord (5.0.1) lib/active_record/connection_adapters/postgresql_adapter.rb:671:in `connect'
+activerecord (5.0.1) lib/active_record/connection_adapters/postgresql_adapter.rb:217:in `initialize'
+activerecord (5.0.1) lib/active_record/connection_adapters/postgresql_adapter.rb:37:in `new'
+activerecord (5.0.1) lib/active_record/connection_adapters/postgresql_adapter.rb:37:in `postgresql_connection'
+activerecord (5.0.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:729:in `new_connection'
+activerecord (5.0.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:773:in `checkout_new_connection'
+activerecord (5.0.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:752:in `try_to_checkout_new_connection'
+activerecord (5.0.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:713:in `acquire_connection'
+activerecord (5.0.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:490:in `checkout'
+activerecord (5.0.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:364:in `connection'
+activerecord (5.0.1) lib/active_record/connection_adapters/abstract/connection_pool.rb:883:in `retrieve_connection'
+activerecord (5.0.1) lib/active_record/connection_handling.rb:128:in `retrieve_connection'
+activerecord (5.0.1) lib/active_record/connection_handling.rb:91:in `connection'
+activerecord (5.0.1) lib/active_record/migration.rb:559:in `connection'
+activerecord (5.0.1) lib/active_record/migration.rb:546:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.1) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.1) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.1) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.1) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.4.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.4.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.4.0) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.1) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.1) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.1) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.1) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.1) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.1) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+request_store (1.3.2) lib/request_store/middleware.rb:9:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.1) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.1) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.1) lib/rails/engine.rb:522:in `call'
+rack (2.0.1) lib/rack/static.rb:149:in `call'
+puma (3.7.0) lib/puma/configuration.rb:226:in `call'
+puma (3.7.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.7.0) lib/puma/server.rb:415:in `process_client'
+puma (3.7.0) lib/puma/server.rb:275:in `block in run'
+puma (3.7.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /home/anton/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /home/anton/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.5ms)
+  Rendering /home/anton/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.6ms)
+  Rendering /home/anton/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/anton/.rvm/gems/ruby-2.3.1/gems/actionpack-5.0.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (68.2ms)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/anton/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+Started GET "/" for 127.0.0.1 at 2017-03-30 16:27:22 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (57.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MainPagesController#home as HTML
+  [1m[36mCategory Load (91.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."title" = $1 LIMIT $2[0m  [["title", "Mobile"], ["LIMIT", 1]]
+  [1m[36mBook Load (105.8ms)[0m  [1m[34mSELECT  "books".* FROM "books" INNER JOIN "categories" ON "categories"."id" = "books"."category_id" INNER JOIN "order_items" ON "order_items"."book_id" = "books"."id" INNER JOIN "orders" ON "orders"."id" = "order_items"."order_id" WHERE (lower(categories.title) = 'mobile') AND "orders"."state" = $1 GROUP BY order_items.book_id, books.id ORDER BY SUM(order_items.quantity) desc LIMIT $2[0m  [["state", "delivered"], ["LIMIT", 4]]
+  [1m[36mHABTM_Authors Load (29.9ms)[0m  [1m[34mSELECT "authors_books".* FROM "authors_books" WHERE "authors_books"."book_id" IN (4, 8, 7)[0m
+  [1m[36mAuthor Load (13.8ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (20, 18, 19)[0m
+  Rendering main_pages/home.html.haml within layouts/application
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "books" INNER JOIN "categories" ON "categories"."id" = "books"."category_id" WHERE (lower(categories.title) = 'mobile') LIMIT $1) subquery_for_count[0m  [["LIMIT", 4]]
+  [1m[36mBook Load (1.9ms)[0m  [1m[34mSELECT  "books".* FROM "books" INNER JOIN "categories" ON "categories"."id" = "books"."category_id" WHERE (lower(categories.title) = 'mobile') ORDER BY "books"."created_at" DESC LIMIT $1[0m  [["LIMIT", 4]]
+  [1m[36mHABTM_Authors Load (0.7ms)[0m  [1m[34mSELECT "authors_books".* FROM "authors_books" WHERE "authors_books"."book_id" IN (19, 18, 17, 16)[0m
+  [1m[36mAuthor Load (0.9ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (18, 19, 20)[0m
+  Rendered books/_carousel_books.html.haml (10333.8ms)
+  Rendered books/_book_buttons.html.haml (8.6ms)
+  Rendered books/_book_buttons.html.haml (1.4ms)
+  Rendered books/_book_buttons.html.haml (1.9ms)
+  Rendered main_pages/home.html.haml within layouts/application (10457.4ms)
+  [1m[36mOrder Load (0.8ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" IS NULL AND "orders"."state" = $1 LIMIT $2[0m  [["state", "processing"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (20.4ms)[0m  [1m[32mINSERT INTO "orders" ("state", "created_at", "updated_at", "total_price") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["state", "processing"], ["created_at", 2017-03-30 13:27:37 UTC], ["updated_at", 2017-03-30 13:27:37 UTC], ["total_price", #<BigDecimal:7f84b387b7b8,'0.0',9(18)>]]
+  [1m[35m (87.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategory Load (0.9ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered layouts/_collapse_ul.html.haml (25.6ms)
+  Rendered layouts/_collapse_ul.html.haml (5.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (12.5ms)
+  Rendered layouts/_collapse_ul.html.haml (31.6ms)
+  Rendered layouts/_navbar.html.haml (103.9ms)
+  Rendered layouts/_dropdown_ul.html.haml (5.3ms)
+  Rendered layouts/_dropdown_ul.html.haml (3.6ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (6.4ms)
+  Rendered layouts/_dropdown_ul.html.haml (8.8ms)
+  Rendered layouts/_navbar.html.haml (22.9ms)
+  Rendered layouts/_header.html.haml (360.1ms)
+  Rendered layouts/_footer.html.haml (11.3ms)
+Completed 200 OK in 13862ms (Views: 11760.4ms | ActiveRecord: 572.7ms)
+
+
+Started GET "/categories/1" for 127.0.0.1 at 2017-03-30 16:27:45 +0300
+Processing by CategoriesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBook Load (102.8ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "authors_books" ON "authors_books"."book_id" = "books"."id" INNER JOIN "authors" ON "authors"."id" = "authors_books"."author_id" INNER JOIN "pictures" ON "pictures"."imageable_id" = "books"."id" AND "pictures"."imageable_type" = $1 INNER JOIN "books_materials" ON "books_materials"."book_id" = "books"."id" INNER JOIN "materials" ON "materials"."id" = "books_materials"."material_id" INNER JOIN "reviews" ON "reviews"."book_id" = "books"."id" AND "reviews"."state" = $2 INNER JOIN "users" ON "users"."id" = "reviews"."user_id"[0m  [["imageable_type", "Book"], ["state", "approved"]]
+  Rendering books/index.html.haml within layouts/application
+  Rendered books/_items_sorted_by.html.haml (3.3ms)
+  Rendered books/_drop_down_list.html.haml (8.6ms)
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_category_items.html.haml (13.1ms)
+  Rendered books/_items_sorted_by.html.haml (0.9ms)
+  Rendered books/_drop_down_list.html.haml (2.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (7.3ms)
+  Rendered books/_drop_down_list.html.haml (8.6ms)
+  [1m[36mBook Load (1.1ms)[0m  [1m[34mSELECT  "books"."id", "books"."price", "books"."title", "books"."count", "books"."avatar" FROM "books" WHERE "books"."category_id" = 1 ORDER BY "books"."title" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 12], ["OFFSET", 0]]
+  [1m[36mHABTM_Authors Load (0.8ms)[0m  [1m[34mSELECT "authors_books".* FROM "authors_books" WHERE "authors_books"."book_id" IN (18, 10, 13, 8, 14, 7, 3, 6, 9, 5, 12, 4)[0m
+  [1m[36mAuthor Load (0.7ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (20, 19, 18)[0m
+  Rendered books/_book_buttons.html.haml (3.7ms)
+  Rendered books/_book_buttons.html.haml (1.4ms)
+  Rendered books/_book_buttons.html.haml (1.1ms)
+  Rendered books/_book_buttons.html.haml (1.0ms)
+  Rendered collection of books/_book.html.haml [4 times] (37.3ms)
+  Rendered books/_book_buttons.html.haml (1.0ms)
+  Rendered books/_book_buttons.html.haml (1.2ms)
+  Rendered books/_book_buttons.html.haml (1.1ms)
+  Rendered books/_book_buttons.html.haml (1.0ms)
+  Rendered collection of books/_book.html.haml [4 times] (29.4ms)
+  Rendered books/_book_buttons.html.haml (1.0ms)
+  Rendered books/_book_buttons.html.haml (1.0ms)
+  Rendered books/_book_buttons.html.haml (1.2ms)
+  Rendered books/_book_buttons.html.haml (1.1ms)
+  Rendered collection of books/_book.html.haml [4 times] (26.0ms)
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "books" WHERE "books"."category_id" = 1[0m
+  Rendered books/index.html.haml within layouts/application (196.5ms)
+  [1m[36mOrder Load (0.7ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 AND "orders"."state" = $2 LIMIT $3[0m  [["id", 14], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (1.1ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1 ORDER BY "order_items"."created_at" ASC[0m  [["order_id", 14]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered layouts/_collapse_ul.html.haml (4.2ms)
+  Rendered layouts/_collapse_ul.html.haml (1.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (7.8ms)
+  Rendered layouts/_collapse_ul.html.haml (10.5ms)
+  Rendered layouts/_navbar.html.haml (29.1ms)
+  Rendered layouts/_dropdown_ul.html.haml (3.3ms)
+  Rendered layouts/_dropdown_ul.html.haml (1.4ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (4.4ms)
+  Rendered layouts/_dropdown_ul.html.haml (7.9ms)
+  Rendered layouts/_navbar.html.haml (16.2ms)
+  Rendered layouts/_header.html.haml (65.9ms)
+  Rendered layouts/_footer.html.haml (8.2ms)
+Completed 200 OK in 801ms (Views: 383.1ms | ActiveRecord: 124.8ms)
+
+
+Started GET "/categories/1?page=2" for 127.0.0.1 at 2017-03-30 16:27:50 +0300
+Processing by CategoriesController#show as HTML
+  Parameters: {"page"=>"2", "id"=>"1"}
+  [1m[36mCategory Load (1.4ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBook Load (12.8ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "authors_books" ON "authors_books"."book_id" = "books"."id" INNER JOIN "authors" ON "authors"."id" = "authors_books"."author_id" INNER JOIN "pictures" ON "pictures"."imageable_id" = "books"."id" AND "pictures"."imageable_type" = $1 INNER JOIN "books_materials" ON "books_materials"."book_id" = "books"."id" INNER JOIN "materials" ON "materials"."id" = "books_materials"."material_id" INNER JOIN "reviews" ON "reviews"."book_id" = "books"."id" AND "reviews"."state" = $2 INNER JOIN "users" ON "users"."id" = "reviews"."user_id"[0m  [["imageable_type", "Book"], ["state", "approved"]]
+  Rendering books/index.html.haml within layouts/application
+  Rendered books/_items_sorted_by.html.haml (2.7ms)
+  Rendered books/_drop_down_list.html.haml (7.1ms)
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_category_items.html.haml (12.3ms)
+  Rendered books/_items_sorted_by.html.haml (0.9ms)
+  Rendered books/_drop_down_list.html.haml (2.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (9.5ms)
+  Rendered books/_drop_down_list.html.haml (10.9ms)
+  [1m[36mBook Load (0.9ms)[0m  [1m[34mSELECT  "books"."id", "books"."price", "books"."title", "books"."count", "books"."avatar" FROM "books" WHERE "books"."category_id" = 1 ORDER BY "books"."title" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 12], ["OFFSET", 12]]
+  [1m[36mHABTM_Authors Load (0.7ms)[0m  [1m[34mSELECT "authors_books".* FROM "authors_books" WHERE "authors_books"."book_id" IN (1, 11, 19, 17, 16, 2, 15)[0m
+  [1m[36mAuthor Load (0.6ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (19, 20, 18)[0m
+  Rendered books/_book_buttons.html.haml (5.1ms)
+  Rendered books/_book_buttons.html.haml (1.2ms)
+  Rendered books/_book_buttons.html.haml (1.1ms)
+  Rendered books/_book_buttons.html.haml (1.1ms)
+  Rendered collection of books/_book.html.haml [4 times] (39.6ms)
+  Rendered books/_book_buttons.html.haml (1.2ms)
+  Rendered books/_book_buttons.html.haml (1.2ms)
+  Rendered books/_book_buttons.html.haml (1.2ms)
+  Rendered collection of books/_book.html.haml [4 times] (23.3ms)
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "books" WHERE "books"."category_id" = 1[0m
+  Rendered books/index.html.haml within layouts/application (126.9ms)
+  [1m[36mOrder Load (0.9ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 AND "orders"."state" = $2 LIMIT $3[0m  [["id", 14], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (1.1ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1 ORDER BY "order_items"."created_at" ASC[0m  [["order_id", 14]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered layouts/_collapse_ul.html.haml (4.8ms)
+  Rendered layouts/_collapse_ul.html.haml (1.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (6.8ms)
+  Rendered layouts/_collapse_ul.html.haml (8.5ms)
+  Rendered layouts/_navbar.html.haml (25.1ms)
+  Rendered layouts/_dropdown_ul.html.haml (6.2ms)
+  Rendered layouts/_dropdown_ul.html.haml (1.3ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (6.6ms)
+  Rendered layouts/_dropdown_ul.html.haml (8.6ms)
+  Rendered layouts/_navbar.html.haml (20.7ms)
+  Rendered layouts/_header.html.haml (61.7ms)
+  Rendered layouts/_footer.html.haml (13.9ms)
+Completed 200 OK in 351ms (Views: 306.3ms | ActiveRecord: 21.7ms)
+
+
+Started GET "/categories/1?page=1" for 127.0.0.1 at 2017-03-30 16:27:54 +0300
+Processing by CategoriesController#show as HTML
+  Parameters: {"page"=>"1", "id"=>"1"}
+  [1m[36mCategory Load (1.4ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBook Load (18.1ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "authors_books" ON "authors_books"."book_id" = "books"."id" INNER JOIN "authors" ON "authors"."id" = "authors_books"."author_id" INNER JOIN "pictures" ON "pictures"."imageable_id" = "books"."id" AND "pictures"."imageable_type" = $1 INNER JOIN "books_materials" ON "books_materials"."book_id" = "books"."id" INNER JOIN "materials" ON "materials"."id" = "books_materials"."material_id" INNER JOIN "reviews" ON "reviews"."book_id" = "books"."id" AND "reviews"."state" = $2 INNER JOIN "users" ON "users"."id" = "reviews"."user_id"[0m  [["imageable_type", "Book"], ["state", "approved"]]
+  Rendering books/index.html.haml within layouts/application
+  Rendered books/_items_sorted_by.html.haml (2.7ms)
+  Rendered books/_drop_down_list.html.haml (7.3ms)
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_category_items.html.haml (13.8ms)
+  Rendered books/_items_sorted_by.html.haml (1.2ms)
+  Rendered books/_drop_down_list.html.haml (2.6ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (6.1ms)
+  Rendered books/_drop_down_list.html.haml (7.6ms)
+  [1m[36mBook Load (1.0ms)[0m  [1m[34mSELECT  "books"."id", "books"."price", "books"."title", "books"."count", "books"."avatar" FROM "books" WHERE "books"."category_id" = 1 ORDER BY "books"."title" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 12], ["OFFSET", 0]]
+  [1m[36mHABTM_Authors Load (0.7ms)[0m  [1m[34mSELECT "authors_books".* FROM "authors_books" WHERE "authors_books"."book_id" IN (18, 10, 13, 8, 14, 7, 3, 6, 9, 5, 12, 4)[0m
+  [1m[36mAuthor Load (0.7ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (20, 19, 18)[0m
+  Rendered books/_book_buttons.html.haml (4.5ms)
+  Rendered books/_book_buttons.html.haml (1.0ms)
+  Rendered books/_book_buttons.html.haml (1.1ms)
+  Rendered books/_book_buttons.html.haml (1.3ms)
+  Rendered collection of books/_book.html.haml [4 times] (35.9ms)
+  Rendered books/_book_buttons.html.haml (1.0ms)
+  Rendered books/_book_buttons.html.haml (1.3ms)
+  Rendered books/_book_buttons.html.haml (1.2ms)
+  Rendered books/_book_buttons.html.haml (1.0ms)
+  Rendered collection of books/_book.html.haml [4 times] (28.5ms)
+  Rendered books/_book_buttons.html.haml (1.1ms)
+  Rendered books/_book_buttons.html.haml (1.1ms)
+  Rendered books/_book_buttons.html.haml (1.2ms)
+  Rendered books/_book_buttons.html.haml (1.1ms)
+  Rendered collection of books/_book.html.haml [4 times] (26.8ms)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "books" WHERE "books"."category_id" = 1[0m
+  Rendered books/index.html.haml within layouts/application (159.1ms)
+  [1m[36mOrder Load (1.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 AND "orders"."state" = $2 LIMIT $3[0m  [["id", 14], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (1.1ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1 ORDER BY "order_items"."created_at" ASC[0m  [["order_id", 14]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered layouts/_collapse_ul.html.haml (4.0ms)
+  Rendered layouts/_collapse_ul.html.haml (1.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (5.4ms)
+  Rendered layouts/_collapse_ul.html.haml (7.1ms)
+  Rendered layouts/_navbar.html.haml (20.0ms)
+  Rendered layouts/_dropdown_ul.html.haml (2.8ms)
+  Rendered layouts/_dropdown_ul.html.haml (1.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (3.7ms)
+  Rendered layouts/_dropdown_ul.html.haml (5.4ms)
+  Rendered layouts/_navbar.html.haml (13.1ms)
+  Rendered layouts/_header.html.haml (48.5ms)
+  Rendered layouts/_footer.html.haml (6.1ms)
+Completed 200 OK in 360ms (Views: 308.2ms | ActiveRecord: 27.5ms)
+
+
+Started GET "/categories/1?page=2" for 127.0.0.1 at 2017-03-30 16:27:58 +0300
+Processing by CategoriesController#show as HTML
+  Parameters: {"page"=>"2", "id"=>"1"}
+  [1m[36mCategory Load (1.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mBook Load (14.2ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "authors_books" ON "authors_books"."book_id" = "books"."id" INNER JOIN "authors" ON "authors"."id" = "authors_books"."author_id" INNER JOIN "pictures" ON "pictures"."imageable_id" = "books"."id" AND "pictures"."imageable_type" = $1 INNER JOIN "books_materials" ON "books_materials"."book_id" = "books"."id" INNER JOIN "materials" ON "materials"."id" = "books_materials"."material_id" INNER JOIN "reviews" ON "reviews"."book_id" = "books"."id" AND "reviews"."state" = $2 INNER JOIN "users" ON "users"."id" = "reviews"."user_id"[0m  [["imageable_type", "Book"], ["state", "approved"]]
+  Rendering books/index.html.haml within layouts/application
+  Rendered books/_items_sorted_by.html.haml (2.2ms)
+  Rendered books/_drop_down_list.html.haml (5.7ms)
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "books"[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_category_items.html.haml (9.0ms)
+  Rendered books/_items_sorted_by.html.haml (1.2ms)
+  Rendered books/_drop_down_list.html.haml (3.4ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (5.8ms)
+  Rendered books/_drop_down_list.html.haml (7.0ms)
+  [1m[36mBook Load (1.4ms)[0m  [1m[34mSELECT  "books"."id", "books"."price", "books"."title", "books"."count", "books"."avatar" FROM "books" WHERE "books"."category_id" = 1 ORDER BY "books"."title" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 12], ["OFFSET", 12]]
+  [1m[36mHABTM_Authors Load (0.8ms)[0m  [1m[34mSELECT "authors_books".* FROM "authors_books" WHERE "authors_books"."book_id" IN (1, 11, 19, 17, 16, 2, 15)[0m
+  [1m[36mAuthor Load (1.7ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (19, 20, 18)[0m
+  Rendered books/_book_buttons.html.haml (4.5ms)
+  Rendered books/_book_buttons.html.haml (1.3ms)
+  Rendered books/_book_buttons.html.haml (1.4ms)
+  Rendered books/_book_buttons.html.haml (1.2ms)
+  Rendered collection of books/_book.html.haml [4 times] (51.8ms)
+  Rendered books/_book_buttons.html.haml (2.3ms)
+  Rendered books/_book_buttons.html.haml (1.3ms)
+  Rendered books/_book_buttons.html.haml (1.5ms)
+  Rendered collection of books/_book.html.haml [4 times] (30.4ms)
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "books" WHERE "books"."category_id" = 1[0m
+  Rendered books/index.html.haml within layouts/application (141.9ms)
+  [1m[36mOrder Load (0.9ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 AND "orders"."state" = $2 LIMIT $3[0m  [["id", 14], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (1.1ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1 ORDER BY "order_items"."created_at" ASC[0m  [["order_id", 14]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered layouts/_collapse_ul.html.haml (4.7ms)
+  Rendered layouts/_collapse_ul.html.haml (1.3ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (7.1ms)
+  Rendered layouts/_collapse_ul.html.haml (9.3ms)
+  Rendered layouts/_navbar.html.haml (25.8ms)
+  Rendered layouts/_dropdown_ul.html.haml (3.6ms)
+  Rendered layouts/_dropdown_ul.html.haml (1.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (4.3ms)
+  Rendered layouts/_dropdown_ul.html.haml (6.7ms)
+  Rendered layouts/_navbar.html.haml (15.1ms)
+  Rendered layouts/_header.html.haml (58.5ms)
+  Rendered layouts/_footer.html.haml (8.8ms)
+Completed 200 OK in 381ms (Views: 332.2ms | ActiveRecord: 24.8ms)
+
+
