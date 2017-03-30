@@ -6,5 +6,5 @@
 - categories.decorate.each do |category|
   %li.mr-35{ class: "#{'active' if current_page?(category)}" }
     = link_to category_sorted_path(category), class: 'filter-link' do
-      = category.title
+      = t("#{category.title}")
       %span.badge.general-badge= category.books_count
