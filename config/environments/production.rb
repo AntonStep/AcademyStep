@@ -59,13 +59,13 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "amazon_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
-  config.app_domain = "salty-harbor-56049.herokuapp.com"
+  config.app_domain = "bookstorestep.herokuapp.com"
 
   # Email
 
 
  config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { host: 'salty-harbor-56049.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'bookstorestep.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.default :charset => "utf-8"
