@@ -19046,3 +19046,624 @@ Processing by CategoriesController#show as HTML
 Completed 200 OK in 368ms (Views: 327.3ms | ActiveRecord: 19.1ms)
 
 
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/oleg/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from block in setup_action_controller at /home/oleg/.rvm/gems/ruby-2.3.1/bundler/gems/draper-e816e0e5876b/lib/draper.rb:36)
+Started GET "/" for 127.0.0.1 at 2017-03-31 12:40:42 +0300
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MainPagesController#home as HTML
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."title" = $1 LIMIT $2[0m  [["title", "Mobile"], ["LIMIT", 1]]
+  [1m[36mBook Load (2.0ms)[0m  [1m[34mSELECT  "books".* FROM "books" INNER JOIN "categories" ON "categories"."id" = "books"."category_id" INNER JOIN "order_items" ON "order_items"."book_id" = "books"."id" INNER JOIN "orders" ON "orders"."id" = "order_items"."order_id" WHERE (lower(categories.title) = 'mobile') AND "orders"."state" = $1 GROUP BY order_items.book_id, books.id ORDER BY SUM(order_items.quantity) desc LIMIT $2[0m  [["state", "delivered"], ["LIMIT", 4]]
+  [1m[36mHABTM_Authors Load (0.4ms)[0m  [1m[34mSELECT "authors_books".* FROM "authors_books" WHERE "authors_books"."book_id" IN (19, 12)[0m
+  [1m[36mAuthor Load (0.4ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (19, 20)[0m
+  Rendering main_pages/home.html.haml within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "books" INNER JOIN "categories" ON "categories"."id" = "books"."category_id" WHERE (lower(categories.title) = 'mobile') LIMIT $1) subquery_for_count[0m  [["LIMIT", 4]]
+  [1m[36mBook Load (1.1ms)[0m  [1m[34mSELECT  "books".* FROM "books" INNER JOIN "categories" ON "categories"."id" = "books"."category_id" WHERE (lower(categories.title) = 'mobile') ORDER BY "books"."created_at" DESC LIMIT $1[0m  [["LIMIT", 4]]
+  [1m[36mHABTM_Authors Load (0.7ms)[0m  [1m[34mSELECT "authors_books".* FROM "authors_books" WHERE "authors_books"."book_id" IN (20, 19, 18, 17)[0m
+  [1m[36mAuthor Load (0.4ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (20, 19)[0m
+  Rendered books/_carousel_books.html.haml (3581.8ms)
+  Rendered books/_book_buttons.html.haml (3.2ms)
+  Rendered books/_book_buttons.html.haml (1.1ms)
+  Rendered main_pages/home.html.haml within layouts/application (3617.9ms)
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 AND "orders"."state" = $2 LIMIT $3[0m  [["id", 64], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.6ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1 ORDER BY "order_items"."created_at" ASC[0m  [["order_id", 64]]
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered layouts/_collapse_ul.html.haml (10.0ms)
+  Rendered layouts/_collapse_ul.html.haml (2.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (12.3ms)
+  Rendered layouts/_collapse_ul.html.haml (14.5ms)
+  Rendered layouts/_navbar.html.haml (36.2ms)
+  Rendered layouts/_dropdown_ul.html.haml (7.4ms)
+  Rendered layouts/_dropdown_ul.html.haml (1.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (7.7ms)
+  Rendered layouts/_dropdown_ul.html.haml (9.7ms)
+  Rendered layouts/_navbar.html.haml (21.8ms)
+  Rendered layouts/_header.html.haml (96.2ms)
+  Rendered layouts/_footer.html.haml (9.9ms)
+Completed 200 OK in 4595ms (Views: 3891.8ms | ActiveRecord: 24.5ms)
+
+
+Started POST "/order_items" for 127.0.0.1 at 2017-03-31 12:41:16 +0300
+Processing by OrderItemsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YDY6ve0tTd4cNfSBonXGwWrRM/DYSp39PvILQE3LnFfuzsmkmpFARVAL52NSfYvg6dN0+bXYkhe7gP3LfOeT0g==", "book_id"=>"19", "quantity"=>"1"}
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 AND "orders"."state" = $2 LIMIT $3[0m  [["id", 64], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.4ms)[0m  [1m[34mSELECT  "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1 AND "order_items"."book_id" = $2 ORDER BY "order_items"."created_at" ASC LIMIT $3[0m  [["order_id", 64], ["book_id", 19], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[35mSQL (41.3ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "book_id", "order_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["quantity", 1], ["book_id", 19], ["order_id", 64], ["created_at", 2017-03-31 09:41:16 UTC], ["updated_at", 2017-03-31 09:41:16 UTC]]
+  [1m[35m (26.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mOrderItem Load (0.4ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1 ORDER BY "order_items"."created_at" ASC[0m  [["order_id", 64]]
+  [1m[36mCoupon Load (180.3ms)[0m  [1m[34mSELECT  "coupons".* FROM "coupons" WHERE "coupons"."order_id" = $1 LIMIT $2[0m  [["order_id", 64], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "orders" SET "updated_at" = $1, "total_price" = $2 WHERE "orders"."id" = $3[0m  [["updated_at", 2017-03-31 09:41:16 UTC], ["total_price", #<BigDecimal:c5cc61c,'0.1159E2',18(27)>], ["id", 64]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "order_items" SET "created_at" = $1, "updated_at" = $2 WHERE "order_items"."id" = $3[0m  [["created_at", 2017-03-31 09:41:16 UTC], ["updated_at", 2017-03-31 09:41:16 UTC], ["id", 30]]
+  [1m[35m (11.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 387ms (ActiveRecord: 265.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2017-03-31 12:41:16 +0300
+Processing by MainPagesController#home as HTML
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."title" = $1 LIMIT $2[0m  [["title", "Mobile"], ["LIMIT", 1]]
+  [1m[36mBook Load (1.3ms)[0m  [1m[34mSELECT  "books".* FROM "books" INNER JOIN "categories" ON "categories"."id" = "books"."category_id" INNER JOIN "order_items" ON "order_items"."book_id" = "books"."id" INNER JOIN "orders" ON "orders"."id" = "order_items"."order_id" WHERE (lower(categories.title) = 'mobile') AND "orders"."state" = $1 GROUP BY order_items.book_id, books.id ORDER BY SUM(order_items.quantity) desc LIMIT $2[0m  [["state", "delivered"], ["LIMIT", 4]]
+  [1m[36mHABTM_Authors Load (0.3ms)[0m  [1m[34mSELECT "authors_books".* FROM "authors_books" WHERE "authors_books"."book_id" IN (19, 12)[0m
+  [1m[36mAuthor Load (0.3ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (19, 20)[0m
+  Rendering main_pages/home.html.haml within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(count_column) FROM (SELECT  1 AS count_column FROM "books" INNER JOIN "categories" ON "categories"."id" = "books"."category_id" WHERE (lower(categories.title) = 'mobile') LIMIT $1) subquery_for_count[0m  [["LIMIT", 4]]
+  [1m[36mBook Load (0.7ms)[0m  [1m[34mSELECT  "books".* FROM "books" INNER JOIN "categories" ON "categories"."id" = "books"."category_id" WHERE (lower(categories.title) = 'mobile') ORDER BY "books"."created_at" DESC LIMIT $1[0m  [["LIMIT", 4]]
+  [1m[36mHABTM_Authors Load (0.4ms)[0m  [1m[34mSELECT "authors_books".* FROM "authors_books" WHERE "authors_books"."book_id" IN (20, 19, 18, 17)[0m
+  [1m[36mAuthor Load (0.3ms)[0m  [1m[34mSELECT "authors".* FROM "authors" WHERE "authors"."id" IN (20, 19)[0m
+  Rendered books/_carousel_books.html.haml (52.4ms)
+  Rendered books/_book_buttons.html.haml (3.9ms)
+  Rendered books/_book_buttons.html.haml (1.5ms)
+  Rendered main_pages/home.html.haml within layouts/application (79.1ms)
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 AND "orders"."state" = $2 LIMIT $3[0m  [["id", 64], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.4ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1 ORDER BY "order_items"."created_at" ASC[0m  [["order_id", 64]]
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered layouts/_collapse_ul.html.haml (7.9ms)
+  Rendered layouts/_collapse_ul.html.haml (0.9ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (10.7ms)
+  Rendered layouts/_collapse_ul.html.haml (12.3ms)
+  Rendered layouts/_navbar.html.haml (30.2ms)
+  Rendered layouts/_dropdown_ul.html.haml (6.9ms)
+  Rendered layouts/_dropdown_ul.html.haml (1.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (8.0ms)
+  Rendered layouts/_dropdown_ul.html.haml (9.7ms)
+  Rendered layouts/_navbar.html.haml (21.5ms)
+  Rendered layouts/_header.html.haml (67.9ms)
+  Rendered layouts/_footer.html.haml (8.9ms)
+Completed 200 OK in 281ms (Views: 265.6ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/cart" for 127.0.0.1 at 2017-03-31 12:41:20 +0300
+Processing by CartsController#edit as HTML
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 AND "orders"."state" = $2 LIMIT $3[0m  [["id", 64], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 64], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.4ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = 64 ORDER BY "order_items"."created_at" ASC[0m
+  [1m[36mBook Load (0.3ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = 19[0m
+  [1m[36mCoupon Load (0.3ms)[0m  [1m[34mSELECT  "coupons".* FROM "coupons" WHERE "coupons"."order_id" = $1 LIMIT $2[0m  [["order_id", 64], ["LIMIT", 1]]
+  Rendering carts/edit.html.haml within layouts/application
+  Rendered order_items/_delete_link.html.haml (2.7ms)
+  Rendered order_items/_quantity_field.html.haml (10.2ms)
+  Rendered order_items/_order_item.html.haml (25.7ms)
+  Rendered orders/_result_panel.html.haml (7.2ms)
+  Rendered carts/_bottom_panel.html.haml (16.7ms)
+  Rendered order_items/_quantity_field.html.haml (4.0ms)
+  Rendered order_items/_delete_link.html.haml (1.1ms)
+  Rendered order_items/_table_field.html.haml (12.9ms)
+  Rendered order_items/_table.html.haml (18.5ms)
+  Rendered orders/_result_panel.html.haml (2.2ms)
+  Rendered carts/_bottom_panel.html.haml (8.2ms)
+  Rendered carts/edit.html.haml within layouts/application (252.0ms)
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered layouts/_collapse_ul.html.haml (6.6ms)
+  Rendered layouts/_collapse_ul.html.haml (1.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (11.9ms)
+  Rendered layouts/_collapse_ul.html.haml (13.7ms)
+  Rendered layouts/_navbar.html.haml (30.1ms)
+  Rendered layouts/_dropdown_ul.html.haml (6.9ms)
+  Rendered layouts/_dropdown_ul.html.haml (1.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (6.6ms)
+  Rendered layouts/_dropdown_ul.html.haml (8.1ms)
+  Rendered layouts/_navbar.html.haml (20.3ms)
+  Rendered layouts/_header.html.haml (58.8ms)
+  Rendered layouts/_footer.html.haml (7.3ms)
+Completed 200 OK in 440ms (Views: 420.3ms | ActiveRecord: 2.5ms)
+
+
+Started PATCH "/cart" for 127.0.0.1 at 2017-03-31 12:41:23 +0300
+Processing by CartsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NwxmUDtjRcHo/YrFMm5nutxErmdf3u7hkutXrWSuxPO59JVJTN9IWqTDmSfCZiqbX0bpbjJM4QsXmaEmVYLLdg==", "order"=>{"order_items_attributes"=>{"0"=>{"quantity"=>"1", "id"=>"30"}}, "coupon"=>{"code"=>""}}, "to_checkout"=>"Checkout"}
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 AND "orders"."state" = $2 LIMIT $3[0m  [["id", 64], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 64], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.5ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = 64 ORDER BY "order_items"."created_at" ASC[0m
+  [1m[36mBook Load (0.3ms)[0m  [1m[34mSELECT "books".* FROM "books" WHERE "books"."id" = 19[0m
+  [1m[36mCoupon Load (0.3ms)[0m  [1m[34mSELECT  "coupons".* FROM "coupons" WHERE "coupons"."code" = $1 LIMIT $2[0m  [["code", ""], ["LIMIT", 1]]
+Unpermitted parameter: coupon
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCoupon Load (0.3ms)[0m  [1m[34mSELECT  "coupons".* FROM "coupons" WHERE "coupons"."order_id" = $1 LIMIT $2[0m  [["order_id", 64], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/checkouts/address
+Completed 302 Found in 28ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/checkouts/address" for 127.0.0.1 at 2017-03-31 12:41:23 +0300
+Processing by CheckoutsController#show as HTML
+  Parameters: {"id"=>"address"}
+Redirected to http://localhost:3000/sign_up/fast
+Filter chain halted as :fast_authenticate_user! rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/sign_up/fast" for 127.0.0.1 at 2017-03-31 12:41:23 +0300
+Processing by UsersController#new as HTML
+  Parameters: {"type"=>"fast"}
+  Rendering users/fast_auth.html.haml within layouts/application
+  Rendered users/_omni_links.html.haml (2.4ms)
+  Rendered devise/sessions/_login_form.html.haml (24.1ms)
+  Rendered users/_omni_links.html.haml (1.3ms)
+  Rendered users/fast_auth.html.haml within layouts/application (41.5ms)
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 AND "orders"."state" = $2 LIMIT $3[0m  [["id", 64], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.4ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1 ORDER BY "order_items"."created_at" ASC[0m  [["order_id", 64]]
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered layouts/_collapse_ul.html.haml (8.6ms)
+  Rendered layouts/_collapse_ul.html.haml (1.4ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (11.7ms)
+  Rendered layouts/_collapse_ul.html.haml (13.7ms)
+  Rendered layouts/_navbar.html.haml (33.0ms)
+  Rendered layouts/_dropdown_ul.html.haml (6.0ms)
+  Rendered layouts/_dropdown_ul.html.haml (2.4ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (7.2ms)
+  Rendered layouts/_dropdown_ul.html.haml (9.0ms)
+  Rendered layouts/_navbar.html.haml (21.2ms)
+  Rendered layouts/_header.html.haml (68.8ms)
+  Rendered layouts/_footer.html.haml (8.6ms)
+Completed 200 OK in 265ms (Views: 233.7ms | ActiveRecord: 4.1ms)
+
+
+Started POST "/sign_in" for 127.0.0.1 at 2017-03-31 12:41:39 +0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"neijMw/19jlf6k0FJCnggZAH3ZP6pfeNoJDvI/O2xXsTEFAqeEn7ohPUXufUIa2gEwWampc3+Gcl4hmowprK/g==", "user"=>{"email"=>"Admin2@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Continue to Checkout"}
+  [1m[36mUser Load (98.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "admin2@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 125ms (ActiveRecord: 98.1ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"neijMw/19jlf6k0FJCnggZAH3ZP6pfeNoJDvI/O2xXsTEFAqeEn7ohPUXufUIa2gEwWampc3+Gcl4hmowprK/g==", "user"=>{"email"=>"Admin2@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Continue to Checkout"}
+  Rendering devise/sessions/new.html.haml within layouts/application
+  Rendered users/_omni_links.html.haml (2.5ms)
+  Rendered devise/sessions/_login_form.html.haml (12.0ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (21.0ms)
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 AND "orders"."state" = $2 LIMIT $3[0m  [["id", 64], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.4ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1 ORDER BY "order_items"."created_at" ASC[0m  [["order_id", 64]]
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered layouts/_collapse_ul.html.haml (10.4ms)
+  Rendered layouts/_collapse_ul.html.haml (1.4ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (12.1ms)
+  Rendered layouts/_collapse_ul.html.haml (15.3ms)
+  Rendered layouts/_navbar.html.haml (37.8ms)
+  Rendered layouts/_dropdown_ul.html.haml (6.3ms)
+  Rendered layouts/_dropdown_ul.html.haml (0.9ms)
+  [1m[36mCACHE (0.3ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (9.7ms)
+  Rendered layouts/_dropdown_ul.html.haml (11.4ms)
+  Rendered layouts/_navbar.html.haml (22.4ms)
+  Rendered layouts/_header.html.haml (75.6ms)
+  Rendered layouts/_footer.html.haml (9.9ms)
+Completed 200 OK in 643ms (Views: 222.7ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/sign_in" for 127.0.0.1 at 2017-03-31 12:41:56 +0300
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"l4reMjtdx3qr4Stq4KV+ExzJK+1i17EGG1OoibD4m3MZci0rTOHK4effOIgQrTMyn8ts5A9FvuyeIV4CgdSU9g==", "user"=>{"email"=>"Admin@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "admin@gmail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 5ms (ActiveRecord: 0.5ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"l4reMjtdx3qr4Stq4KV+ExzJK+1i17EGG1OoibD4m3MZci0rTOHK4effOIgQrTMyn8ts5A9FvuyeIV4CgdSU9g==", "user"=>{"email"=>"Admin@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering devise/sessions/new.html.haml within layouts/application
+  Rendered users/_omni_links.html.haml (2.4ms)
+  Rendered devise/sessions/_login_form.html.haml (11.1ms)
+  Rendered devise/sessions/new.html.haml within layouts/application (18.4ms)
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 AND "orders"."state" = $2 LIMIT $3[0m  [["id", 64], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.4ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1 ORDER BY "order_items"."created_at" ASC[0m  [["order_id", 64]]
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered layouts/_collapse_ul.html.haml (8.3ms)
+  Rendered layouts/_collapse_ul.html.haml (1.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (24.2ms)
+  Rendered layouts/_collapse_ul.html.haml (26.1ms)
+  Rendered layouts/_navbar.html.haml (44.9ms)
+  Rendered layouts/_dropdown_ul.html.haml (4.9ms)
+  Rendered layouts/_dropdown_ul.html.haml (0.9ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (7.0ms)
+  Rendered layouts/_dropdown_ul.html.haml (10.0ms)
+  Rendered layouts/_navbar.html.haml (19.6ms)
+  Rendered layouts/_header.html.haml (80.4ms)
+  Rendered layouts/_footer.html.haml (6.1ms)
+Completed 200 OK in 456ms (Views: 218.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/sign_up" for 127.0.0.1 at 2017-03-31 12:42:30 +0300
+Processing by UsersController#new as HTML
+  Rendering users/new.html.haml within layouts/application
+  Rendered users/_omni_links.html.haml (4.4ms)
+  Rendered users/new.html.haml within layouts/application (17.4ms)
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 AND "orders"."state" = $2 LIMIT $3[0m  [["id", 64], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.4ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1 ORDER BY "order_items"."created_at" ASC[0m  [["order_id", 64]]
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered layouts/_collapse_ul.html.haml (7.9ms)
+  Rendered layouts/_collapse_ul.html.haml (1.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (9.8ms)
+  Rendered layouts/_collapse_ul.html.haml (11.7ms)
+  Rendered layouts/_navbar.html.haml (29.8ms)
+  Rendered layouts/_dropdown_ul.html.haml (5.3ms)
+  Rendered layouts/_dropdown_ul.html.haml (1.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (7.7ms)
+  Rendered layouts/_dropdown_ul.html.haml (9.5ms)
+  Rendered layouts/_navbar.html.haml (19.7ms)
+  Rendered layouts/_header.html.haml (64.6ms)
+  Rendered layouts/_footer.html.haml (7.4ms)
+Completed 200 OK in 204ms (Views: 201.6ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/" for 127.0.0.1 at 2017-03-31 12:42:43 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"7crJBaKQFSleqYqTCezgfP9NqfXPluXZQ3KmmTJyPXNjMjoc1SwYshKXmXH55K1dfE/u/KIE6jPGAFASA14y9g==", "user"=>{"email"=>"matveevol@yandex.ru", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "matveevol@yandex.ru"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  Rendering users/new.html.haml within layouts/application
+  Rendered users/_omni_links.html.haml (2.2ms)
+  Rendered users/new.html.haml within layouts/application (15.1ms)
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 AND "orders"."state" = $2 LIMIT $3[0m  [["id", 64], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.8ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1 ORDER BY "order_items"."created_at" ASC[0m  [["order_id", 64]]
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered layouts/_collapse_ul.html.haml (6.6ms)
+  Rendered layouts/_collapse_ul.html.haml (1.3ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (8.7ms)
+  Rendered layouts/_collapse_ul.html.haml (11.9ms)
+  Rendered layouts/_navbar.html.haml (31.1ms)
+  Rendered layouts/_dropdown_ul.html.haml (6.4ms)
+  Rendered layouts/_dropdown_ul.html.haml (0.9ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (6.8ms)
+  Rendered layouts/_dropdown_ul.html.haml (8.5ms)
+  Rendered layouts/_navbar.html.haml (20.3ms)
+  Rendered layouts/_header.html.haml (65.6ms)
+  Rendered layouts/_footer.html.haml (7.1ms)
+Completed 200 OK in 535ms (Views: 198.6ms | ActiveRecord: 2.8ms)
+
+
+Started POST "/" for 127.0.0.1 at 2017-03-31 12:42:49 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6IIz1iw8ttDWYwCHfy7uRKwqhfFUb92w2ZQ73ylpYm9mesDPW4C7S5pdE2WPJqNlLyjC+Dn90lpc5s1UGEVt6g==", "user"=>{"email"=>"matveevol3@yandex.ru", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "matveevol3@yandex.ru"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  Rendering users/new.html.haml within layouts/application
+  Rendered users/_omni_links.html.haml (2.1ms)
+  Rendered users/new.html.haml within layouts/application (15.0ms)
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 AND "orders"."state" = $2 LIMIT $3[0m  [["id", 64], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.4ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1 ORDER BY "order_items"."created_at" ASC[0m  [["order_id", 64]]
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered layouts/_collapse_ul.html.haml (7.9ms)
+  Rendered layouts/_collapse_ul.html.haml (1.3ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (11.5ms)
+  Rendered layouts/_collapse_ul.html.haml (13.6ms)
+  Rendered layouts/_navbar.html.haml (32.1ms)
+  Rendered layouts/_dropdown_ul.html.haml (5.3ms)
+  Rendered layouts/_dropdown_ul.html.haml (1.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (8.6ms)
+  Rendered layouts/_dropdown_ul.html.haml (11.1ms)
+  Rendered layouts/_navbar.html.haml (21.1ms)
+  Rendered layouts/_header.html.haml (66.6ms)
+  Rendered layouts/_footer.html.haml (9.4ms)
+Completed 200 OK in 226ms (Views: 203.1ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/" for 127.0.0.1 at 2017-03-31 12:43:01 +0300
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"lD3A3Y4533h6/oMVBETiPZbGgfAS948pM5M0qlTkhNoaxTPE+YXS4zbAkPf0TK8cFcTG+X9lgMO24cIhZciLXw==", "user"=>{"email"=>"matveevol3@yandex.ru", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "matveevol3@yandex.ru"], ["LIMIT", 1]]
+  [1m[35mSQL (63.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at", "confirmation_token", "confirmation_sent_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "matveevol3@yandex.ru"], ["encrypted_password", "$2a$11$sOCymUA7CUA6TQp4KZEAved.WXxReNPmcN9BOSerzGjUIQak90dOi"], ["created_at", 2017-03-31 09:43:02 UTC], ["updated_at", 2017-03-31 09:43:02 UTC], ["confirmation_token", "VtryUc6iHVRhKyvdhyqc"], ["confirmation_sent_at", 2017-03-31 09:43:02 UTC]]
+  [1m[35m (20.6ms)[0m  [1m[35mCOMMIT[0m
+  Rendering devise/mailer/confirmation_instructions.html.erb
+  Rendered devise/mailer/confirmation_instructions.html.erb (1.5ms)
+Devise::Mailer#confirmation_instructions: processed outbound mail in 262.4ms
+Sent mail to matveevol3@yandex.ru (99.4ms)
+Date: Fri, 31 Mar 2017 12:43:02 +0300
+From: bookstorestep@gmail.com
+Reply-To: bookstorestep@gmail.com
+To: matveevol3@yandex.ru
+Message-ID: <58de24a673cc0_7126606757414965@oleg.mail>
+Subject: Confirmation instructions
+Mime-Version: 1.0
+Content-Type: text/html;
+ charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+<p>Welcome matveevol3@yandex.ru!</p>
+
+<p>You can confirm your account email through the link below:</p>
+
+<p><a href="http://localhost:3000/confirmation?confirmation_token=VtryUc6iHVRhKyvdhyqc">Confirm my account</a></p>
+
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", 2017-03-31 09:43:02 UTC], ["last_sign_in_at", 2017-03-31 09:43:02 UTC], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["updated_at", 2017-03-31 09:43:02 UTC], ["id", 16]]
+  [1m[35m (24.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/checkouts/address
+Completed 302 Found in 796ms (ActiveRecord: 109.5ms)
+
+
+Started GET "/checkouts/address" for 127.0.0.1 at 2017-03-31 12:43:02 +0300
+Processing by CheckoutsController#show as HTML
+  Parameters: {"id"=>"address"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 AND "orders"."state" = $2 LIMIT $3[0m  [["id", 64], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."state" = $2 ORDER BY "orders"."id" DESC LIMIT $3[0m  [["user_id", 16], ["state", "processing"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "orders" ("state", "user_id", "created_at", "updated_at", "total_price") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["state", "processing"], ["user_id", 16], ["created_at", 2017-03-31 09:43:02 UTC], ["updated_at", 2017-03-31 09:43:02 UTC], ["total_price", #<BigDecimal:b01f2bb4,'0.0',9(18)>]]
+  [1m[35m (16.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mOrderItem Load (0.4ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1 ORDER BY "order_items"."created_at" ASC[0m  [["order_id", 64]]
+  [1m[36mOrderItem Load (0.4ms)[0m  [1m[34mSELECT  "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1 AND "order_items"."book_id" = $2 ORDER BY "order_items"."created_at" ASC LIMIT $3[0m  [["order_id", 65], ["book_id", 19], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mBook Load (1.3ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "order_items" ("quantity", "book_id", "order_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["quantity", 1], ["book_id", 19], ["order_id", 65], ["created_at", 2017-03-31 09:43:02 UTC], ["updated_at", 2017-03-31 09:43:02 UTC]]
+  [1m[35m (36.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCoupon Load (0.3ms)[0m  [1m[34mSELECT  "coupons".* FROM "coupons" WHERE "coupons"."order_id" = $1 LIMIT $2[0m  [["order_id", 64], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (29.4ms)[0m  [1m[31mDELETE FROM "order_items" WHERE "order_items"."id" = $1[0m  [["id", 30]]
+  [1m[36mAddress Load (16.3ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."addressable_id" = $1 AND "addresses"."addressable_type" = $2 AND "addresses"."address_type" = $3 LIMIT $4[0m  [["addressable_id", 64], ["addressable_type", "Order"], ["address_type", 0], ["LIMIT", 1]]
+  [1m[36mAddress Load (0.4ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."addressable_id" = $1 AND "addresses"."addressable_type" = $2 AND "addresses"."address_type" = $3 LIMIT $4[0m  [["addressable_id", 64], ["addressable_type", "Order"], ["address_type", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "orders" WHERE "orders"."id" = $1[0m  [["id", 64]]
+  [1m[35m (56.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[33mUPDATE "orders" SET "updated_at" = $1, "total_price" = $2 WHERE "orders"."id" = $3[0m  [["updated_at", 2017-03-31 09:43:02 UTC], ["total_price", #<BigDecimal:aff811b4,'0.1159E2',18(27)>], ["id", 65]]
+  [1m[35m (52.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAddress Load (0.7ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."addressable_id" = $1 AND "addresses"."addressable_type" = $2 AND "addresses"."address_type" = $3 LIMIT $4[0m  [["addressable_id", 65], ["addressable_type", "Order"], ["address_type", 0], ["LIMIT", 1]]
+  [1m[36mAddress Load (1.1ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."addressable_id" = $1 AND "addresses"."addressable_type" = $2 AND "addresses"."address_type" = $3 LIMIT $4[0m  [["addressable_id", 65], ["addressable_type", "Order"], ["address_type", 1], ["LIMIT", 1]]
+  [1m[36mAddress Load (0.4ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."addressable_id" = $1 AND "addresses"."addressable_type" = $2 AND "addresses"."address_type" = $3 LIMIT $4[0m  [["addressable_id", 16], ["addressable_type", "User"], ["address_type", 0], ["LIMIT", 1]]
+  [1m[36mAddress Load (0.4ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."addressable_id" = $1 AND "addresses"."addressable_type" = $2 AND "addresses"."address_type" = $3 LIMIT $4[0m  [["addressable_id", 16], ["addressable_type", "User"], ["address_type", 1], ["LIMIT", 1]]
+  Rendering checkouts/address.html.haml within layouts/application
+  Rendered checkouts/_step_nav.html.haml (3.9ms)
+  [1m[36mCountry Load (80.5ms)[0m  [1m[34mSELECT "countries"."id", "countries"."name", "countries"."code" FROM "countries"[0m
+  Rendered addresses/_fields.haml (155.2ms)
+  Rendered addresses/_fields.haml (21.6ms)
+  Rendered orders/_result_panel.html.haml (6.8ms)
+  Rendered checkouts/address.html.haml within layouts/application (204.3ms)
+  [1m[36mCategory Load (1.3ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered layouts/_collapse_ul.html.haml (12.8ms)
+  Rendered layouts/_collapse_ul.html.haml (1.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (12.1ms)
+  Rendered layouts/_collapse_ul.html.haml (14.3ms)
+  [1m[36mBook Load (10.0ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "authors_books" ON "authors_books"."book_id" = "books"."id" INNER JOIN "authors" ON "authors"."id" = "authors_books"."author_id" INNER JOIN "pictures" ON "pictures"."imageable_id" = "books"."id" AND "pictures"."imageable_type" = $1 INNER JOIN "books_materials" ON "books_materials"."book_id" = "books"."id" INNER JOIN "materials" ON "materials"."id" = "books_materials"."material_id" INNER JOIN "reviews" ON "reviews"."book_id" = "books"."id" AND "reviews"."state" = $2 INNER JOIN "users" ON "users"."id" = "reviews"."user_id"[0m  [["imageable_type", "Book"], ["state", "approved"]]
+  Rendered layouts/_collapse_ul.html.haml (72.2ms)
+  Rendered layouts/_navbar.html.haml (112.3ms)
+  Rendered layouts/_dropdown_ul.html.haml (5.8ms)
+  Rendered layouts/_dropdown_ul.html.haml (1.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (8.5ms)
+  Rendered layouts/_dropdown_ul.html.haml (10.2ms)
+  Rendered layouts/_dropdown_ul.html.haml (1.1ms)
+  Rendered layouts/_navbar.html.haml (23.1ms)
+  Rendered layouts/_header.html.haml (147.3ms)
+  Rendered layouts/_footer.html.haml (9.1ms)
+Completed 200 OK in 831ms (Views: 413.8ms | ActiveRecord: 322.8ms)
+
+
+Started PATCH "/checkouts/address" for 127.0.0.1 at 2017-03-31 12:43:34 +0300
+Processing by CheckoutsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KA0GxDaEmnpuV/6c6GYgYZXxM3oIHgTBTs8j0VTF/5Sm9fXdQTiX4SJp7X4Ybm1AFvN0c2WMCyvLvdVaZenwEQ==", "order"=>{"billing_attributes"=>{"address_type"=>"billing", "first_name"=>"gdsdfg", "last_name"=>"sdfgsdfg", "name"=>"sdfgdsfg", "city"=>"sdadsg", "zip"=>"49000", "country_id"=>"1", "phone"=>"+380501234567"}, "shipping_attributes"=>{"address_type"=>"shipping", "first_name"=>"", "last_name"=>"", "name"=>"", "city"=>"", "zip"=>"", "country_id"=>"", "phone"=>""}}, "use_base_address"=>"on", "commit"=>"Save and Continue", "id"=>"address"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 AND "orders"."state" = $2 LIMIT $3[0m  [["id", 65], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mOrder Load (1.0ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."state" = $2 ORDER BY "orders"."id" DESC LIMIT $3[0m  [["user_id", 16], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mAddress Load (0.6ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."addressable_id" = $1 AND "addresses"."addressable_type" = $2 AND "addresses"."address_type" = $3 LIMIT $4[0m  [["addressable_id", 65], ["addressable_type", "Order"], ["address_type", 0], ["LIMIT", 1]]
+  [1m[36mAddress Load (0.6ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."addressable_id" = $1 AND "addresses"."addressable_type" = $2 AND "addresses"."address_type" = $3 LIMIT $4[0m  [["addressable_id", 65], ["addressable_type", "Order"], ["address_type", 1], ["LIMIT", 1]]
+  [1m[36mAddress Load (0.6ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."addressable_id" = $1 AND "addresses"."addressable_type" = $2 AND "addresses"."address_type" = $3 LIMIT $4[0m  [["addressable_id", 16], ["addressable_type", "User"], ["address_type", 0], ["LIMIT", 1]]
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."addressable_id" = $1 AND "addresses"."addressable_type" = $2 AND "addresses"."address_type" = $3 LIMIT $4[0m  [["addressable_id", 16], ["addressable_type", "User"], ["address_type", 1], ["LIMIT", 1]]
+  [1m[36mCountry Load (0.6ms)[0m  [1m[34mSELECT  "countries".* FROM "countries" WHERE "countries"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "countries".* FROM "countries" WHERE "countries"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mOrderItem Load (0.5ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1 ORDER BY "order_items"."created_at" ASC[0m  [["order_id", 65]]
+  [1m[36mBook Load (1.5ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mCoupon Load (0.8ms)[0m  [1m[34mSELECT  "coupons".* FROM "coupons" WHERE "coupons"."order_id" = $1 LIMIT $2[0m  [["order_id", 65], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "orders" SET "updated_at" = $1, "use_base_address" = $2 WHERE "orders"."id" = $3[0m  [["updated_at", 2017-03-31 09:43:34 UTC], ["use_base_address", true], ["id", 65]]
+  [1m[35mSQL (31.1ms)[0m  [1m[32mINSERT INTO "addresses" ("addressable_type", "addressable_id", "first_name", "last_name", "name", "country_id", "city", "zip", "phone", "created_at", "updated_at", "address_type") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["addressable_type", "Order"], ["addressable_id", 65], ["first_name", "gdsdfg"], ["last_name", "sdfgsdfg"], ["name", "sdfgdsfg"], ["country_id", 1], ["city", "sdadsg"], ["zip", "49000"], ["phone", "+380501234567"], ["created_at", 2017-03-31 09:43:34 UTC], ["updated_at", 2017-03-31 09:43:34 UTC], ["address_type", 0]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "addresses" ("addressable_type", "addressable_id", "first_name", "last_name", "name", "country_id", "city", "zip", "phone", "created_at", "updated_at", "address_type") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["addressable_type", "Order"], ["addressable_id", 65], ["first_name", "gdsdfg"], ["last_name", "sdfgsdfg"], ["name", "sdfgdsfg"], ["country_id", 1], ["city", "sdadsg"], ["zip", "49000"], ["phone", "+380501234567"], ["created_at", 2017-03-31 09:43:34 UTC], ["updated_at", 2017-03-31 09:43:34 UTC], ["address_type", 1]]
+  [1m[35m (81.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/checkouts/delivery
+Completed 302 Found in 211ms (ActiveRecord: 122.8ms)
+
+
+Started GET "/checkouts/delivery" for 127.0.0.1 at 2017-03-31 12:43:35 +0300
+Processing by CheckoutsController#show as HTML
+  Parameters: {"id"=>"delivery"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 AND "orders"."state" = $2 LIMIT $3[0m  [["id", 65], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."state" = $2 ORDER BY "orders"."id" DESC LIMIT $3[0m  [["user_id", 16], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.4ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1 ORDER BY "order_items"."created_at" ASC[0m  [["order_id", 65]]
+  [1m[36mAddress Load (2.2ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."addressable_id" = $1 AND "addresses"."addressable_type" = $2 AND "addresses"."address_type" = $3 LIMIT $4[0m  [["addressable_id", 65], ["addressable_type", "Order"], ["address_type", 0], ["LIMIT", 1]]
+  [1m[36mAddress Load (0.5ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."addressable_id" = $1 AND "addresses"."addressable_type" = $2 AND "addresses"."address_type" = $3 LIMIT $4[0m  [["addressable_id", 65], ["addressable_type", "Order"], ["address_type", 1], ["LIMIT", 1]]
+  Rendering checkouts/delivery.html.haml within layouts/application
+  Rendered checkouts/_step_nav.html.haml (4.6ms)
+  [1m[36mCountry Load (0.3ms)[0m  [1m[34mSELECT  "countries".* FROM "countries" WHERE "countries"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mDelivery Load (24.3ms)[0m  [1m[34mSELECT "deliveries".* FROM "deliveries" WHERE "deliveries"."country_id" = 1[0m
+  [1m[36mBook Load (0.7ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mCoupon Load (14.5ms)[0m  [1m[34mSELECT  "coupons".* FROM "coupons" WHERE "coupons"."order_id" = $1 LIMIT $2[0m  [["order_id", 65], ["LIMIT", 1]]
+  Rendered deliveries/_delivery_checkbox.html.haml (23.8ms)
+  Rendered deliveries/_delivery_checkbox.html.haml (0.6ms)
+  Rendered deliveries/_deliveries_xs.html.haml (79.8ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "deliveries".* FROM "deliveries" WHERE "deliveries"."country_id" = 1[0m
+  Rendered deliveries/_delivery_checkbox.html.haml (0.8ms)
+  Rendered deliveries/_delivery_checkbox.html.haml (0.5ms)
+  Rendered deliveries/_deliveries_md.html.haml (217.2ms)
+  Rendered orders/_result_panel.html.haml (6.1ms)
+  Rendered checkouts/delivery.html.haml within layouts/application (323.6ms)
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered layouts/_collapse_ul.html.haml (8.1ms)
+  Rendered layouts/_collapse_ul.html.haml (1.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (9.2ms)
+  Rendered layouts/_collapse_ul.html.haml (11.5ms)
+  [1m[36mBook Load (9.7ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "authors_books" ON "authors_books"."book_id" = "books"."id" INNER JOIN "authors" ON "authors"."id" = "authors_books"."author_id" INNER JOIN "pictures" ON "pictures"."imageable_id" = "books"."id" AND "pictures"."imageable_type" = $1 INNER JOIN "books_materials" ON "books_materials"."book_id" = "books"."id" INNER JOIN "materials" ON "materials"."id" = "books_materials"."material_id" INNER JOIN "reviews" ON "reviews"."book_id" = "books"."id" AND "reviews"."state" = $2 INNER JOIN "users" ON "users"."id" = "reviews"."user_id"[0m  [["imageable_type", "Book"], ["state", "approved"]]
+  Rendered layouts/_collapse_ul.html.haml (14.3ms)
+  Rendered layouts/_navbar.html.haml (43.4ms)
+  Rendered layouts/_dropdown_ul.html.haml (6.0ms)
+  Rendered layouts/_dropdown_ul.html.haml (0.9ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (7.6ms)
+  Rendered layouts/_dropdown_ul.html.haml (9.2ms)
+  Rendered layouts/_dropdown_ul.html.haml (1.0ms)
+  Rendered layouts/_navbar.html.haml (21.1ms)
+  Rendered layouts/_header.html.haml (72.4ms)
+  Rendered layouts/_footer.html.haml (8.2ms)
+Completed 200 OK in 533ms (Views: 456.7ms | ActiveRecord: 57.1ms)
+
+
+Started PATCH "/checkouts/delivery" for 127.0.0.1 at 2017-03-31 12:43:40 +0300
+Processing by CheckoutsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"w6Q83E93u/hlYku1PzUfGlxHFEhfg1TbyKndgfQKoAlNXM/FOMu2YylcWFfPPVI730VTQTIRWzFN2ysKxSavjA==", "delivery_id"=>"1", "commit"=>"Save and Continue", "id"=>"delivery"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 AND "orders"."state" = $2 LIMIT $3[0m  [["id", 65], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mOrder Load (1.4ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."state" = $2 ORDER BY "orders"."id" DESC LIMIT $3[0m  [["user_id", 16], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mDelivery Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "deliveries" WHERE "deliveries"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mOrderItem Load (0.4ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1 ORDER BY "order_items"."created_at" ASC[0m  [["order_id", 65]]
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mCoupon Load (0.3ms)[0m  [1m[34mSELECT  "coupons".* FROM "coupons" WHERE "coupons"."order_id" = $1 LIMIT $2[0m  [["order_id", 65], ["LIMIT", 1]]
+  [1m[36mDelivery Load (0.3ms)[0m  [1m[34mSELECT  "deliveries".* FROM "deliveries" WHERE "deliveries"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "orders" SET "updated_at" = $1, "delivery_id" = $2, "total_price" = $3 WHERE "orders"."id" = $4[0m  [["updated_at", 2017-03-31 09:43:40 UTC], ["delivery_id", 1], ["total_price", #<BigDecimal:b0965ce8,'0.10659E3',18(27)>], ["id", 65]]
+  [1m[35m (29.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/checkouts/payment
+Completed 302 Found in 67ms (ActiveRecord: 34.2ms)
+
+
+Started GET "/checkouts/payment" for 127.0.0.1 at 2017-03-31 12:43:40 +0300
+Processing by CheckoutsController#show as HTML
+  Parameters: {"id"=>"payment"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 AND "orders"."state" = $2 LIMIT $3[0m  [["id", 65], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."state" = $2 ORDER BY "orders"."id" DESC LIMIT $3[0m  [["user_id", 16], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.5ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1 ORDER BY "order_items"."created_at" ASC[0m  [["order_id", 65]]
+  [1m[36mAddress Load (1.6ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."addressable_id" = $1 AND "addresses"."addressable_type" = $2 AND "addresses"."address_type" = $3 LIMIT $4[0m  [["addressable_id", 65], ["addressable_type", "Order"], ["address_type", 0], ["LIMIT", 1]]
+  [1m[36mAddress Load (0.4ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."addressable_id" = $1 AND "addresses"."addressable_type" = $2 AND "addresses"."address_type" = $3 LIMIT $4[0m  [["addressable_id", 65], ["addressable_type", "Order"], ["address_type", 1], ["LIMIT", 1]]
+  [1m[36mDelivery Load (0.3ms)[0m  [1m[34mSELECT  "deliveries".* FROM "deliveries" WHERE "deliveries"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering checkouts/payment.html.haml within layouts/application
+  Rendered checkouts/_step_nav.html.haml (5.8ms)
+  Rendered credit_cards/_fields.html.haml (12.7ms)
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mCoupon Load (0.2ms)[0m  [1m[34mSELECT  "coupons".* FROM "coupons" WHERE "coupons"."order_id" = $1 LIMIT $2[0m  [["order_id", 65], ["LIMIT", 1]]
+  Rendered orders/_result_panel.html.haml (10.4ms)
+  Rendered checkouts/payment.html.haml within layouts/application (35.8ms)
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered layouts/_collapse_ul.html.haml (6.5ms)
+  Rendered layouts/_collapse_ul.html.haml (1.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (9.2ms)
+  Rendered layouts/_collapse_ul.html.haml (11.2ms)
+  [1m[36mBook Load (10.3ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "authors_books" ON "authors_books"."book_id" = "books"."id" INNER JOIN "authors" ON "authors"."id" = "authors_books"."author_id" INNER JOIN "pictures" ON "pictures"."imageable_id" = "books"."id" AND "pictures"."imageable_type" = $1 INNER JOIN "books_materials" ON "books_materials"."book_id" = "books"."id" INNER JOIN "materials" ON "materials"."id" = "books_materials"."material_id" INNER JOIN "reviews" ON "reviews"."book_id" = "books"."id" AND "reviews"."state" = $2 INNER JOIN "users" ON "users"."id" = "reviews"."user_id"[0m  [["imageable_type", "Book"], ["state", "approved"]]
+  Rendered layouts/_collapse_ul.html.haml (14.4ms)
+  Rendered layouts/_navbar.html.haml (42.1ms)
+  Rendered layouts/_dropdown_ul.html.haml (5.5ms)
+  Rendered layouts/_dropdown_ul.html.haml (1.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (6.2ms)
+  Rendered layouts/_dropdown_ul.html.haml (7.8ms)
+  Rendered layouts/_dropdown_ul.html.haml (1.0ms)
+  Rendered layouts/_navbar.html.haml (19.4ms)
+  Rendered layouts/_header.html.haml (69.6ms)
+  Rendered layouts/_footer.html.haml (7.9ms)
+Completed 200 OK in 240ms (Views: 199.9ms | ActiveRecord: 15.1ms)
+
+
+Started PATCH "/checkouts/payment" for 127.0.0.1 at 2017-03-31 12:43:57 +0300
+Processing by CheckoutsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fqcm0u+H3frhWz2oxI7PgyTdhWsswLtAZIbcPCKnfmrwX9XLmDvQYa1lLko0hoKip9/CYkFStKrh9Cq3E4tx7w==", "order"=>{"credit_card_attributes"=>{"number"=>"1234123412341234", "name"=>"asdfsdaf", "month_year"=>"01/22", "cvv"=>"123"}}, "commit"=>"Save and Continue", "id"=>"payment"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 AND "orders"."state" = $2 LIMIT $3[0m  [["id", 65], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."state" = $2 ORDER BY "orders"."id" DESC LIMIT $3[0m  [["user_id", 16], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mCreditCard Load (91.5ms)[0m  [1m[34mSELECT  "credit_cards".* FROM "credit_cards" WHERE "credit_cards"."number" = $1 LIMIT $2[0m  [["number", "1234123412341234"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (8.5ms)[0m  [1m[32mINSERT INTO "credit_cards" ("number", "cvv", "created_at", "updated_at", "name", "month_year") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["number", "1234123412341234"], ["cvv", "123"], ["created_at", 2017-03-31 09:43:57 UTC], ["updated_at", 2017-03-31 09:43:57 UTC], ["name", "asdfsdaf"], ["month_year", "01/22"]]
+  [1m[35m (23.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mOrderItem Load (0.4ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1 ORDER BY "order_items"."created_at" ASC[0m  [["order_id", 65]]
+  [1m[36mBook Load (0.6ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  [1m[36mCoupon Load (0.2ms)[0m  [1m[34mSELECT  "coupons".* FROM "coupons" WHERE "coupons"."order_id" = $1 LIMIT $2[0m  [["order_id", 65], ["LIMIT", 1]]
+  [1m[36mDelivery Load (0.4ms)[0m  [1m[34mSELECT  "deliveries".* FROM "deliveries" WHERE "deliveries"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "orders" SET "updated_at" = $1, "credit_card_id" = $2 WHERE "orders"."id" = $3[0m  [["updated_at", 2017-03-31 09:43:57 UTC], ["credit_card_id", 6], ["id", 65]]
+  [1m[35m (12.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/checkouts/confirm
+Completed 302 Found in 195ms (ActiveRecord: 144.4ms)
+
+
+Started GET "/checkouts/confirm" for 127.0.0.1 at 2017-03-31 12:43:57 +0300
+Processing by CheckoutsController#show as HTML
+  Parameters: {"id"=>"confirm"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 AND "orders"."state" = $2 LIMIT $3[0m  [["id", 65], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."user_id" = $1 AND "orders"."state" = $2 ORDER BY "orders"."id" DESC LIMIT $3[0m  [["user_id", 16], ["state", "processing"], ["LIMIT", 1]]
+  [1m[36mOrderItem Load (0.3ms)[0m  [1m[34mSELECT "order_items".* FROM "order_items" WHERE "order_items"."order_id" = $1 ORDER BY "order_items"."created_at" ASC[0m  [["order_id", 65]]
+  [1m[36mAddress Load (0.4ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."addressable_id" = $1 AND "addresses"."addressable_type" = $2 AND "addresses"."address_type" = $3 LIMIT $4[0m  [["addressable_id", 65], ["addressable_type", "Order"], ["address_type", 0], ["LIMIT", 1]]
+  [1m[36mAddress Load (0.4ms)[0m  [1m[34mSELECT  "addresses".* FROM "addresses" WHERE "addresses"."addressable_id" = $1 AND "addresses"."addressable_type" = $2 AND "addresses"."address_type" = $3 LIMIT $4[0m  [["addressable_id", 65], ["addressable_type", "Order"], ["address_type", 1], ["LIMIT", 1]]
+  [1m[36mDelivery Load (0.3ms)[0m  [1m[34mSELECT  "deliveries".* FROM "deliveries" WHERE "deliveries"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCreditCard Load (0.3ms)[0m  [1m[34mSELECT  "credit_cards".* FROM "credit_cards" WHERE "credit_cards"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering checkouts/confirm.html.haml within layouts/application
+  Rendered checkouts/_step_nav.html.haml (3.6ms)
+  [1m[36mCountry Load (0.3ms)[0m  [1m[34mSELECT  "countries".* FROM "countries" WHERE "countries"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered addresses/_panel.html.haml (7.3ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "countries".* FROM "countries" WHERE "countries"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered addresses/_panel.html.haml (1.8ms)
+  Rendered orders/_components_panel.html.haml (18.8ms)
+  [1m[36mBook Load (0.4ms)[0m  [1m[34mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT $2[0m  [["id", 19], ["LIMIT", 1]]
+  Rendered order_items/_quantity_field.html.haml (2.1ms)
+  Rendered collection of order_items/_order_item.html.haml [1 times] (13.3ms)
+  Rendered order_items/_quantity_field.html.haml (0.1ms)
+  Rendered order_items/_table_field.html.haml (5.7ms)
+  Rendered order_items/_table.html.haml (10.6ms)
+  [1m[36mCoupon Load (0.2ms)[0m  [1m[34mSELECT  "coupons".* FROM "coupons" WHERE "coupons"."order_id" = $1 LIMIT $2[0m  [["order_id", 65], ["LIMIT", 1]]
+  Rendered orders/_result_panel.html.haml (10.1ms)
+  Rendered checkouts/confirm.html.haml within layouts/application (66.0ms)
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered layouts/_collapse_ul.html.haml (6.4ms)
+  Rendered layouts/_collapse_ul.html.haml (0.9ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (14.8ms)
+  Rendered layouts/_collapse_ul.html.haml (16.4ms)
+  [1m[36mBook Load (10.9ms)[0m  [1m[34mSELECT "books".* FROM "books" INNER JOIN "authors_books" ON "authors_books"."book_id" = "books"."id" INNER JOIN "authors" ON "authors"."id" = "authors_books"."author_id" INNER JOIN "pictures" ON "pictures"."imageable_id" = "books"."id" AND "pictures"."imageable_type" = $1 INNER JOIN "books_materials" ON "books_materials"."book_id" = "books"."id" INNER JOIN "materials" ON "materials"."id" = "books_materials"."material_id" INNER JOIN "reviews" ON "reviews"."book_id" = "books"."id" AND "reviews"."state" = $2 INNER JOIN "users" ON "users"."id" = "reviews"."user_id"[0m  [["imageable_type", "Book"], ["state", "approved"]]
+  Rendered layouts/_collapse_ul.html.haml (14.6ms)
+  Rendered layouts/_navbar.html.haml (46.3ms)
+  Rendered layouts/_dropdown_ul.html.haml (4.6ms)
+  Rendered layouts/_dropdown_ul.html.haml (1.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT "categories"."id", "categories"."title", "categories"."books_count" FROM "categories"[0m
+  Rendered books/_items_with_category.html.haml (5.8ms)
+  Rendered layouts/_dropdown_ul.html.haml (7.3ms)
+  Rendered layouts/_dropdown_ul.html.haml (1.0ms)
+  Rendered layouts/_navbar.html.haml (18.4ms)
+  Rendered layouts/_header.html.haml (72.7ms)
+  Rendered layouts/_footer.html.haml (8.0ms)
+Completed 200 OK in 262ms (Views: 226.3ms | ActiveRecord: 15.0ms)
+
+
