@@ -4,7 +4,7 @@
     = render "layouts/#{type}_ul", list_id: 'home', title: 'home' do
       - @categories.each do |category|
         %li
-          = link_to category.title, home_path(category.decorate.title_key),
+          = link_to t("#{category.title}"), home_path(category.decorate.title_key),
             class: "#{type}-link"
 
   %li{class: "#{type}"}

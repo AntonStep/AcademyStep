@@ -8,7 +8,12 @@ RailsAdmin.config do |config|
   config.current_user_method(&:current_user)
 
   ## == Cancan ==
-  config.authorize_with :cancan
+  #config.authorize_with :cancan
+
+  config.authorize_with do
+      redirect_to main_app.root_path unless warden.user.admin?
+end
+
 
   ## == Pundit ==
   # config.authorize_with :pundit
@@ -125,6 +130,8 @@ RailsAdmin.config do |config|
   config.model 'Material' do
     exclude_fields :id, :created_at, :updated_at, :books
   end
+
+
 
   config.model 'User' do
     list do
